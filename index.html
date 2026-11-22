@@ -509,12 +509,12 @@ html{scroll-padding-top:76px}
   <div class="tor-rahmen">
     <div class="tor" id="tor">
       <div class="dias">
-        <img class="dia an" id="hero-img" src="img/hero_1.jpg" srcset="img/hero_1_m.jpg 1200w, img/hero_1.jpg 2400w" sizes="(min-width:861px) 90vw, 100vw" fetchpriority="high" decoding="async" alt="Graues Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen" width="2400" height="1350">
+        <img class="dia an" id="hero-img" src="img/hero_1.jpg" srcset="img/hero_1_m.jpg 1200w, img/hero_1.jpg 2400w" sizes="(min-width:861px) 90vw, 100vw" fetchpriority="high" decoding="async" alt="Weisses Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen" width="2400" height="1350">
       </div>
       <div class="lamelle" aria-hidden="true"><b></b></div>
     </div>
     <div class="tor-leiste">
-      <a class="schild" id="schild" href="#auto-9"><small>Jetzt bei uns</small><span>Toyota GT86 · CHF 22’500.–</span></a>
+      <a class="schild" id="schild" href="#bewertungen"><small>Schon bei uns verkauft</small><span>Subaru BRZ · Kalvaroweg 1</span></a>
       <div class="dia-nav" id="dia-nav" role="group" aria-label="Fotos wechseln">
         <button type="button" data-schritt="-1" aria-label="Vorheriges Auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
         <span class="punkte" id="punkte"></span>
@@ -853,11 +853,11 @@ else { himg.addEventListener('load',torAuf,{once:true}); himg.addEventListener('
 
 /* ---------- Wechselnde Autos im Tor ---------- */
 var DIAS=[
- {f:'hero_1',fm:'hero_1_m',k:'Jetzt bei uns',t:'Toyota GT86 · CHF 22’500.–',h:'#auto-9',a:'Graues Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen',op:'50% 60%',opm:'50% 60%'},
- {f:'hero_2',fm:'hero_2_m',k:'Jetzt bei uns',t:'Mazda MX-5 · CHF 21’900.–',h:'#auto-11',a:'Weisser Roadster vor der Glasfront der Garage',op:'50% 60%',opm:'50% 60%'},
- {f:'hero_3',fm:'hero_3_m',k:'Jetzt bei uns',t:'Audi Q7 · CHF 38’900.–',h:'#auto-2',a:'Schwarzer SUV vor dem weissen Garagengebäude',op:'50% 60%',opm:'50% 60%'},
- {f:'hero_4',fm:'hero_4_m',k:'Jetzt bei uns',t:'Opel Grandland X · CHF 18’900.–',h:'#auto-3',a:'Weisser SUV vor der Garage mit blauen Akzenten',op:'50% 60%',opm:'50% 60%'},
- {f:'hero_5',fm:'hero_5_m',k:'Jetzt bei uns',t:'Toyota Hilux · CHF 24’900.–',h:'#auto-12',a:'Grauer Pickup vor dem weissen Garagengebäude',op:'50% 60%',opm:'50% 60%'}
+ {f:'hero_1',fm:'hero_1_m',k:'Schon bei uns verkauft',t:'Subaru BRZ · Kalvaroweg 1',h:'#bewertungen',a:'Weisses Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen',op:'50% 62%',opm:'50% 62%'},
+ {f:'hero_2',fm:'hero_2_m',k:'Schon bei uns verkauft',t:'Toyota GT86 · Kalvaroweg 1',h:'#bewertungen',a:'Gelbes Sportcoupé vor der Glasfront der Garage',op:'50% 62%',opm:'50% 62%'},
+ {f:'hero_3',fm:'hero_3_m',k:'Schon bei uns verkauft',t:'BMW 3er · Kalvaroweg 1',h:'#bewertungen',a:'Dunkelblaue Limousine vor dem weissen Garagengebäude',op:'50% 62%',opm:'50% 62%'},
+ {f:'hero_4',fm:'hero_4_m',k:'Schon bei uns verkauft',t:'Seat Leon ST · Kalvaroweg 1',h:'#bewertungen',a:'Grauer Kombi vor der Garage mit blauen Akzenten',op:'50% 62%',opm:'50% 62%'},
+ {f:'hero_5',fm:'hero_5_m',k:'Schon bei uns verkauft',t:'Mazda MX-5 · Kalvaroweg 1',h:'#bewertungen',a:'Roter Roadster der 90er-Jahre vor dem weissen Garagengebäude',op:'50% 62%',opm:'50% 62%'}
 ];
 var diasEl=tor.querySelector('.dias'), schild=D.getElementById('schild'), punkte=D.getElementById('punkte'), diaNav=D.getElementById('dia-nav');
 var diaImgs=[himg], diaI=0, diaT=null, diaPause=false, diaGestartet=false;

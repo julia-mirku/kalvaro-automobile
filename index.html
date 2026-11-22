@@ -10,13 +10,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero_2.jpg" media="(min-width: 861px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/hero_2_m.jpg" media="(max-width: 860px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero_1.jpg" media="(min-width: 861px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero_1_m.jpg" media="(max-width: 860px)" fetchpriority="high">
 <style>
 :root{
   --nacht:#0F1012; --anthrazit:#1C1E21; --stahl:#2A2D31; --stahl2:#3A3D42;
   --beton:#ECEBE7; --beton2:#DFDDD7; --weiss:#FFFFFF;
-  --orange:#19B8FF; --orange-hell:#6FD3FF;
+  --akzent:#19B8FF; --akzent-hell:#6FD3FF;
   --glow:0 0 0 4px rgba(25,184,255,.18), 0 10px 30px rgba(25,184,255,.28);
   --glow-hell:0 0 0 3px rgba(111,211,255,.35), 0 10px 26px rgba(25,184,255,.22);
   --text:#16181B; --text-hell:#F2F1EE; --grau:#A7AAB0; --grau-d:#5C6068;
@@ -25,8 +25,8 @@
   --body:'Lexend', system-ui, sans-serif;
   --r:14px;
 }
-body{--orange:#0A78B8}
-.kopf,.hero,.occ,.ankauf,.galerie,.nacht,.dunkel,.brett,.tafel,.navi,.fuss,.instrument{--orange:#19B8FF}
+body{--akzent:#0A78B8}
+.kopf,.hero,.occ,.ankauf,.galerie,.nacht,.dunkel,.brett,.tafel,.navi,.fuss,.instrument{--akzent:#19B8FF}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--body);color:var(--text);background:var(--beton);line-height:1.55;font-size:17px;overflow-x:hidden}
@@ -36,7 +36,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .wrap{width:min(1240px,100% - 40px);margin-inline:auto}
 h1,h2,h3{font-family:var(--kopf);line-height:1;letter-spacing:.01em}
 h2{font-size:clamp(34px,5vw,64px);font-weight:700;text-transform:uppercase;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
-.kicker{font-family:var(--kopf);font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:14px;color:var(--orange)}
+.kicker{font-family:var(--kopf);font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:14px;color:var(--akzent)}
 .lead{font-size:clamp(17px,1.6vw,20px);max-width:60ch;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 section{padding:clamp(72px,9vw,120px) 0}
 .dunkel{background:var(--anthrazit);color:var(--text-hell)}
@@ -52,8 +52,8 @@ section{padding:clamp(72px,9vw,120px) 0}
 .btn-d{border:2px solid var(--stahl);color:var(--text)}
 @media (hover:hover){
   .ready .btn-o:hover{background:#6FD3FF;box-shadow:var(--glow)}
-  .ready .btn-r:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(25,184,255,.14);color:#fff}
-  .ready .btn-d:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(25,184,255,.12)}
+  .ready .btn-r:hover{border-color:var(--akzent);box-shadow:0 0 0 4px rgba(25,184,255,.14);color:#fff}
+  .ready .btn-d:hover{border-color:var(--akzent);box-shadow:0 0 0 4px rgba(25,184,255,.12)}
 }
 .btn:active{transform:scale(.97)}
 :focus-visible{outline:2px solid #19B8FF;outline-offset:3px;border-radius:6px}
@@ -89,7 +89,7 @@ html{scroll-padding-top:76px}
 
 /* ---------- Hero: das ganze Tor ---------- */
 .hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:clamp(24px,3.4vw,56px);min-height:calc(100svh - 70px);padding:24px max(20px,calc((100vw - 1320px) / 2)) 32px;background:var(--nacht);color:var(--text-hell);overflow:hidden}
-.tor-rahmen{position:relative;order:2;width:min(62vw,calc((100svh - 70px - 76px) * 4 / 3 + 20px));padding:10px;background:var(--orange);border-radius:4px}
+.tor-rahmen{position:relative;order:2;width:min(62vw,calc((100svh - 70px - 76px) * 4 / 3 + 20px));padding:10px;background:var(--akzent);border-radius:4px}
 .tor{position:relative;overflow:hidden;width:100%;aspect-ratio:4/3;background:#16171a}
 .tor .dias{position:absolute;inset:0;transform:scale(1.06);filter:brightness(.45) saturate(.8)}
 .tor .dia{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--op,50% 100%);opacity:0;transition:opacity 1.2s ease}
@@ -120,14 +120,14 @@ html{scroll-padding-top:76px}
 @keyframes hoch{0%{transform:translateY(0)}9%{transform:translateY(-3%)}13%{transform:translateY(-2.3%)}100%{transform:translateY(-102%)}}
 @keyframes licht{to{transform:scale(1);filter:brightness(1) saturate(1)}}
 .tor-leiste .schild{position:absolute;right:12px;top:12px;z-index:5;pointer-events:auto;display:flex;flex-direction:column;gap:2px;padding:10px 14px;background:rgba(15,16,18,.82);backdrop-filter:blur(6px);border-radius:10px;color:#fff;text-decoration:none;opacity:0;transform:translateY(-8px);transition:opacity .5s, transform .5s, box-shadow .2s}
-.tor-leiste .schild small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:700}
+.tor-leiste .schild small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--akzent);font-weight:700}
 .tor-leiste .schild span{font-family:var(--kopf);font-size:22px;font-weight:700;letter-spacing:.03em}
 .ready .tor-leiste .schild{opacity:1;transform:none}
 @media (hover:hover){.ready .tor-leiste .schild:hover{box-shadow:var(--glow-hell)}}
 .hero .text{position:relative;order:1;z-index:4}
 .hero .text .wrap{width:auto;margin:0;display:flex;flex-direction:column;gap:24px}
 .hero h1{font-size:clamp(36px,min(4.3vw,8.4vh),84px);font-weight:700;text-transform:uppercase;line-height:.88;margin:10px 0 0;text-shadow:0 4px 30px rgba(0,0,0,.4)}
-.hero h1 em{font-style:normal;color:var(--orange)}
+.hero h1 em{font-style:normal;color:var(--akzent)}
 .hero .lead{color:#D5D7DA;margin-top:16px;max-width:52ch;display:none}
 @media (min-height:1050px) and (min-width:861px){.hero .lead{display:block}}
 .hero .kicker{text-shadow:0 1px 12px rgba(0,0,0,.8)}
@@ -157,7 +157,7 @@ html{scroll-padding-top:76px}
   .hero .text .wrap{width:min(1240px,100% - 40px);margin:0 auto;gap:14px}
   .hero h1{font-size:clamp(34px,10.2vw,62px)}
   .hero .lead{display:none}
-  .tor-rahmen{padding:5px 5px 0;background:var(--orange)}
+  .tor-rahmen{padding:5px 5px 0;background:var(--akzent)}
   .tor-leiste{position:static;display:flex;flex-direction:row-reverse;justify-content:space-between;align-items:center;gap:8px;margin:5px -5px 0;padding:8px 14px 0;background:var(--nacht)}
   .tor-leiste .schild{position:static;flex-direction:row;align-items:baseline;gap:8px;padding:4px 0;background:none;backdrop-filter:none;min-width:0;overflow:hidden}
   .tor-leiste .schild small{flex:none}
@@ -210,9 +210,9 @@ html{scroll-padding-top:76px}
 @media (max-height:820px) and (min-width:1021px){.instrument .hinweis{display:none}.instrument{padding:14px 16px}.frage{font-size:19px;margin-bottom:8px}.feld{margin-top:8px}.lz button,.sport-w button{min-height:34px}.anfrage{min-height:44px;margin-top:8px}.modus button{min-height:36px}.schieber{margin-top:6px}}
 #tacho.zieht{cursor:grabbing}
 #tacho .tick{stroke:#cfd2d6}
-#tacho .tick.rot{stroke:var(--orange)}
+#tacho .tick.rot{stroke:var(--akzent)}
 #tacho .zahl{font-family:var(--kopf);font-weight:700;font-size:21px;fill:#e9eaec}
-#tacho .zahl.rot{fill:var(--orange)}
+#tacho .zahl.rot{fill:var(--akzent)}
 #tacho .einheit{font-family:var(--kopf);font-weight:600;font-size:13px;letter-spacing:.18em;fill:#8d9198;text-transform:uppercase}
 #tacho .wert{font-family:var(--kopf);font-weight:700;font-size:42px;fill:#fff}
 #tacho .wert-k{font-family:var(--kopf);font-weight:700;font-size:20px;letter-spacing:.06em;fill:#19B8FF}
@@ -222,11 +222,11 @@ html{scroll-padding-top:76px}
 @media (hover:hover){.ready #tacho:not(.busy):hover .nabe{filter:drop-shadow(0 0 8px rgba(25,184,255,.8))}}
 .anzeige{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px}
 .anzeige .treffer{font-family:var(--kopf);font-size:22px;font-weight:700;letter-spacing:.04em}
-.anzeige .treffer b{color:var(--orange)}
-.schieber{width:100%;margin-top:14px;accent-color:var(--orange);height:28px;cursor:pointer}
+.anzeige .treffer b{color:var(--akzent)}
+.schieber{width:100%;margin-top:14px;accent-color:var(--akzent);height:28px;cursor:pointer}
 .hinweis{font-size:14px;color:#8d9198;margin-top:6px}
 .reset{font-size:14px;font-weight:600;color:#cfd2d6;padding:8px 12px;border-radius:999px;border:1.5px solid #3c3f45;transition:box-shadow .2s, border-color .2s, color .2s}
-@media (hover:hover){.ready .reset:hover{border-color:var(--orange);color:#fff;box-shadow:0 0 0 3px rgba(25,184,255,.15)}}
+@media (hover:hover){.ready .reset:hover{border-color:var(--akzent);color:#fff;box-shadow:0 0 0 3px rgba(25,184,255,.15)}}
 
 .gaenge{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:14px}
 .gaenge button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;border-radius:10px;background:#0d0e10;border:1.5px solid #2e3136;color:#cfd2d6;font-size:11px;font-weight:600;letter-spacing:.02em;transition:border-color .2s, box-shadow .2s, background-color .2s, color .2s}
@@ -271,7 +271,7 @@ html{scroll-padding-top:76px}
 .auto .foto{aspect-ratio:4/3;overflow:hidden;background:#16171a}
 .auto .foto img{width:100%;height:100%;object-fit:contain;transition:transform .5s ease}
 .auto .info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
-.auto .marke{font-family:var(--kopf);font-weight:700;letter-spacing:.16em;font-size:14px;color:var(--orange);text-transform:uppercase}
+.auto .marke{font-family:var(--kopf);font-weight:700;letter-spacing:.16em;font-size:14px;color:var(--akzent);text-transform:uppercase}
 .auto h3{font-family:var(--body);font-weight:700;font-size:18px;line-height:1.25}
 .auto .daten{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;color:#AEB1B7}
 .auto .preis{margin-top:auto;padding-top:10px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 8px}
@@ -282,15 +282,15 @@ html{scroll-padding-top:76px}
 .auto .ps{font-family:var(--kopf);font-weight:700;font-size:17px;color:#d6d8db;letter-spacing:.04em}
 .auto .marken{position:absolute;z-index:2;pointer-events:none;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap}
 .auto .marken span{font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 9px;border-radius:999px;background:rgba(15,16,18,.82);color:#fff}
-.auto .marken span.o{background:var(--orange)}
+.auto .marken span.o{background:var(--akzent)}
 .auto.aus{opacity:.22;filter:grayscale(1)}
 .auto h3 a{color:inherit;text-decoration:none}
 .auto .ganz::after{content:"";position:absolute;inset:0;z-index:1}
 .auto .aktion{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #34373c;font-size:14px;font-weight:700}
-.auto .anruf svg{width:15px;height:15px;color:var(--orange)}
+.auto .anruf svg{width:15px;height:15px;color:var(--akzent)}
 .auto .anruf{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:#fff;text-decoration:none;padding:7px 12px;border-radius:999px;border:1.5px solid #4a4d53;transition:border-color .2s, box-shadow .2s}
 .auto .inserat{color:#AEB1B7}
-@media (hover:hover){.ready .auto.live .anruf:hover{border-color:var(--orange);box-shadow:0 0 0 3px rgba(25,184,255,.18)}}
+@media (hover:hover){.ready .auto.live .anruf:hover{border-color:var(--akzent);box-shadow:0 0 0 3px rgba(25,184,255,.18)}}
 @media (min-width:1200px){.auto.gross{grid-column:span 2}.auto.gross .foto{aspect-ratio:4/3}.auto.gross h3{font-size:24px}.auto.gross .preis b{font-size:36px}}
 .autos.rot .auto:not(.aus){border-color:rgba(25,184,255,.75);box-shadow:0 0 0 3px rgba(25,184,255,.18),0 0 34px rgba(25,184,255,.28)}
 .js .auto.aus.shown:not(.live){animation:none;opacity:.22}
@@ -312,14 +312,14 @@ html{scroll-padding-top:76px}
     opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .25s, transform .25s}
   .mini.zeigen{opacity:1;transform:none;pointer-events:auto}
   .mini .mw{font-family:var(--kopf);font-weight:700;font-size:20px;white-space:nowrap;min-width:118px}
-  .mini .mw small{display:block;font-size:13px;font-weight:600;color:var(--orange);letter-spacing:.08em}
-  .mini input{flex:1;accent-color:var(--orange);height:28px}
+  .mini .mw small{display:block;font-size:13px;font-weight:600;color:var(--akzent);letter-spacing:.08em}
+  .mini input{flex:1;accent-color:var(--akzent);height:28px}
 }
 
 /* ---------- Versprechen ---------- */
 .vier{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
 .punkt{background:#fff;border-radius:var(--r);padding:24px 22px;border:1px solid var(--beton2);transition:box-shadow .2s, transform .2s, border-color .2s}
-.zahl-gross{font-family:var(--kopf);font-weight:700;font-size:clamp(64px,6vw,88px);line-height:.9;color:var(--orange);margin-bottom:12px;letter-spacing:-.01em}
+.zahl-gross{font-family:var(--kopf);font-weight:700;font-size:clamp(64px,6vw,88px);line-height:.9;color:var(--akzent);margin-bottom:12px;letter-spacing:-.01em}
 .zahl-gross small{font-size:.42em;font-weight:700;color:var(--text);margin-left:4px}
 .punkt h3{font-size:26px;font-weight:700;text-transform:uppercase;margin-bottom:8px}
 .punkt p{font-size:15.5px;color:#4a4e55}
@@ -328,14 +328,14 @@ html{scroll-padding-top:76px}
 @media (max-width:540px){.vier{grid-template-columns:1fr}}
 
 /* ---------- Ankauf ---------- */
-.ankauf{background:var(--nacht);color:#fff;padding:clamp(56px,7vw,96px) 0;border-top:6px solid var(--orange)}
+.ankauf{background:var(--nacht);color:#fff;padding:clamp(56px,7vw,96px) 0;border-top:6px solid var(--akzent)}
 .ankauf .wrap{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 .ankauf .foto{border-radius:var(--r);overflow:hidden;transition:box-shadow .25s}
 .ankauf .foto img{width:100%;height:auto}
 @media (hover:hover){.ready .ankauf .foto.live:hover{box-shadow:0 0 0 4px rgba(25,184,255,.25)}}
 .ankauf .btn{margin-top:22px}
 @media (max-width:860px){.ankauf .wrap{grid-template-columns:minmax(0,1fr)}}
-.ankauf h2 em{font-style:normal;color:var(--orange)}
+.ankauf h2 em{font-style:normal;color:var(--akzent)}
 .ankauf .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
 .ankauf h2{font-size:clamp(34px,4.4vw,56px)}
 .ankauf p{max-width:58ch;margin-top:10px;font-size:17px}
@@ -350,7 +350,7 @@ html{scroll-padding-top:76px}
 .dienste{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
 .dienst{background:#fff;border:1px solid var(--beton2);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:8px;transition:box-shadow .2s, border-color .2s, transform .2s}
 .dienst svg{width:34px;height:34px;color:var(--text)}
-.dienst svg .o{color:var(--orange);stroke:var(--orange)}
+.dienst svg .o{color:var(--akzent);stroke:var(--akzent)}
 .dienst h3{font-size:22px;font-weight:700;text-transform:uppercase}
 .dienst p{font-size:15px;color:#4a4e55}
 @media (hover:hover){.ready .dienst.live:hover{border-color:rgba(25,184,255,.5);box-shadow:0 0 0 4px rgba(25,184,255,.10);transform:translateY(-3px)}}
@@ -362,7 +362,7 @@ html{scroll-padding-top:76px}
 .pfeile{display:flex;gap:10px}
 .pfeil{width:52px;height:52px;border-radius:50%;border:2px solid #3c3f45;display:grid;place-items:center;transition:border-color .2s, box-shadow .2s}
 .pfeil svg{width:22px;height:22px}
-@media (hover:hover){.ready .pfeil:hover{border-color:var(--orange);box-shadow:0 0 0 4px rgba(25,184,255,.15)}}
+@media (hover:hover){.ready .pfeil:hover{border-color:var(--akzent);box-shadow:0 0 0 4px rgba(25,184,255,.15)}}
 .band{display:grid;grid-auto-flow:column;grid-auto-columns:max-content;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 18px;scrollbar-width:thin;scrollbar-color:#444 transparent;overscroll-behavior-x:contain}
 .band figure{scroll-snap-align:start;border-radius:var(--r);overflow:hidden;position:relative;background:#111;transition:box-shadow .25s}
 .band img{height:min(360px,62vw);width:auto;max-width:none;aspect-ratio:auto;transition:transform .6s ease}
@@ -372,7 +372,7 @@ html{scroll-padding-top:76px}
 /* ---------- Team ---------- */
 .team .oben{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:44px}
 .zitat{font-family:var(--kopf);font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.15}
-.zitat em{font-style:normal;color:var(--orange)}
+.zitat em{font-style:normal;color:var(--akzent)}
 .leute{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .mensch{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--beton2);transition:box-shadow .2s, transform .2s, border-color .2s}
 .mensch img{width:100%;aspect-ratio:3/4;object-fit:cover}
@@ -401,7 +401,7 @@ html{scroll-padding-top:76px}
 .tag{position:relative;border-radius:18px 18px 14px 14px;padding:44px 22px 22px;transition:box-shadow .25s, transform .25s;box-shadow:0 12px 26px rgba(0,0,0,.35)}
 .tag::before{content:"";position:absolute;top:14px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--stahl);box-shadow:inset 0 2px 3px rgba(0,0,0,.5)}
 .tag.t1{background:#F4F3F0;color:var(--text)}
-.tag.t2{background:var(--orange);color:#fff}
+.tag.t2{background:var(--akzent);color:#041019}
 .tag.t3{background:#111214;color:var(--text-hell);border:1px solid #3a3d42}
 .tag blockquote{font-size:16.5px;line-height:1.5}
 .tag .wer{margin-top:14px;display:flex;justify-content:space-between;gap:8px;font-size:14px;font-weight:700}
@@ -422,8 +422,8 @@ html{scroll-padding-top:76px}
 .tag-k{min-height:64px;border-radius:12px;background:#1d1f22;border:1.5px solid #2e3136;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:var(--kopf);font-weight:700;letter-spacing:.06em;font-size:19px;transition:border-color .2s, box-shadow .2s, background-color .2s;cursor:pointer}
 .tag-k small{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.04em;color:#8d9198}
 .tag-k.zu{color:#6d7178}
-.tag-k[aria-selected="true"]{border-color:var(--orange);background:#0e2432;box-shadow:0 0 0 4px rgba(25,184,255,.16)}
-.tag-k.heute small{color:var(--orange)}
+.tag-k[aria-selected="true"]{border-color:var(--akzent);background:#0e2432;box-shadow:0 0 0 4px rgba(25,184,255,.16)}
+.tag-k.heute small{color:var(--akzent)}
 @media (hover:hover){.ready .tag-k:hover{border-color:rgba(111,211,255,.8);box-shadow:0 0 0 3px rgba(25,184,255,.12)}}
 .zeit-anzeige{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:#1d1f22;border-radius:14px;padding:16px 18px}
 .zeit-anzeige .tn{font-family:var(--kopf);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em}
@@ -432,23 +432,23 @@ html{scroll-padding-top:76px}
 .termin{margin-top:14px;font-size:14.5px;color:#AEB1B7}
 .navi{border-radius:22px;overflow:hidden;background:#0d0f12;color:#e8eaed;border:1px solid #23272d;box-shadow:inset 0 0 0 6px #16191d,0 24px 50px rgba(0,0,0,.25)}
 .navi-kopf{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 20px 10px;font-family:var(--kopf);font-weight:600;letter-spacing:.16em;font-size:14px;color:#9aa0a7;text-transform:uppercase}
-.navi-led{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-right:10px;box-shadow:0 0 8px var(--orange)}
+.navi-led{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--akzent);margin-right:10px;box-shadow:0 0 8px var(--akzent)}
 .navi-kopf #navi-uhr{color:#fff;letter-spacing:.06em;font-size:18px}
 .navi-schirm{position:relative;margin:0 14px;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 60% 30%,#171b21 0%,#0b0d10 75%)}
 .navi-schirm svg{display:block;width:100%;height:auto;max-height:420px}
 .gitter line{stroke:#161a20;stroke-width:1}
 .strasse{fill:none;stroke:#353a42;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
-.aktiv{fill:none;stroke:var(--orange);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(25,184,255,.7));opacity:0;transition:opacity .35s ease}
+.aktiv{fill:none;stroke:var(--akzent);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(25,184,255,.7));opacity:0;transition:opacity .35s ease}
 .aktiv.an{opacity:1}
 .ort-k{cursor:pointer;outline:none}
 .ort-k .treffer{fill:transparent}
 .start{fill:#0d0f12;stroke:#8d939b;stroke-width:2.5;transition:stroke .2s, fill .2s}
 .ort{fill:#aeb3ba;font-family:var(--kopf);font-weight:600;font-size:19px;letter-spacing:.05em;paint-order:stroke;stroke:#0d0f12;stroke-width:5px;stroke-linejoin:round;transition:fill .2s}
-.ort-k[aria-pressed="true"] .start{fill:var(--orange);stroke:#fff}
+.ort-k[aria-pressed="true"] .start{fill:var(--akzent);stroke:#fff}
 .ort-k[aria-pressed="true"] .ort{fill:#fff}
-.ort-k:focus-visible .start{stroke:var(--orange-hell);stroke-width:4}
-@media (hover:hover){.ready .navi.live .ort-k:hover .start{stroke:var(--orange-hell)}.ready .navi.live .ort-k:hover .ort{fill:#fff}}
-.ziel circle{fill:var(--orange)}
+.ort-k:focus-visible .start{stroke:var(--akzent-hell);stroke-width:4}
+@media (hover:hover){.ready .navi.live .ort-k:hover .start{stroke:var(--akzent-hell)}.ready .navi.live .ort-k:hover .ort{fill:#fff}}
+.ziel circle{fill:var(--akzent)}
 .ziel .ziel-ring{fill:none;stroke:rgba(25,184,255,.45);stroke-width:2}
 .ziel text{fill:#fff;font-family:var(--kopf);font-weight:700;font-size:19px;letter-spacing:.04em;paint-order:stroke;stroke:#0d0f12;stroke-width:5px;stroke-linejoin:round}
 .navi-tipp{padding:2px 12px 10px;font-size:12.5px;color:#7d838b}
@@ -481,7 +481,7 @@ html{scroll-padding-top:76px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
-.logo-txt{display:flex;flex-direction:column;line-height:1;text-decoration:none;color:#fff}.logo-txt b{font-family:var(--kopf);font-weight:700;font-style:italic;font-size:30px;letter-spacing:.08em;color:var(--orange)}.logo-txt small{font-family:var(--body);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#b5b8bd;margin-top:3px}
+.logo-txt{display:flex;flex-direction:column;line-height:1;text-decoration:none;color:#fff}.logo-txt b{font-family:var(--kopf);font-weight:700;font-style:italic;font-size:30px;letter-spacing:.08em;color:var(--akzent)}.logo-txt small{font-family:var(--body);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#b5b8bd;margin-top:3px}
 </style>
 </head>
 <body>
@@ -509,12 +509,12 @@ html{scroll-padding-top:76px}
   <div class="tor-rahmen">
     <div class="tor" id="tor">
       <div class="dias">
-        <img class="dia an" id="hero-img" src="img/hero_2.jpg" srcset="img/hero_2_m.jpg 1200w, img/hero_2.jpg 2400w" sizes="(min-width:861px) 90vw, 100vw" fetchpriority="high" decoding="async" alt="Gelbes Sportcoupé vor dem dunklen Garagengebäude mit Glastoren" width="2400" height="1350">
+        <img class="dia an" id="hero-img" src="img/hero_1.jpg" srcset="img/hero_1_m.jpg 1200w, img/hero_1.jpg 2400w" sizes="(min-width:861px) 90vw, 100vw" fetchpriority="high" decoding="async" alt="Graues Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen" width="2400" height="1350">
       </div>
       <div class="lamelle" aria-hidden="true"><b></b></div>
     </div>
     <div class="tor-leiste">
-      <a class="schild" id="schild" href="#bewertungen"><small>Schon bei uns verkauft</small><span>Toyota GR Supra · Kalvaroweg 1</span></a>
+      <a class="schild" id="schild" href="#auto-9"><small>Jetzt bei uns</small><span>Toyota GT86 · CHF 22’500.–</span></a>
       <div class="dia-nav" id="dia-nav" role="group" aria-label="Fotos wechseln">
         <button type="button" data-schritt="-1" aria-label="Vorheriges Auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 5l-7 7 7 7"/></svg></button>
         <span class="punkte" id="punkte"></span>
@@ -639,7 +639,7 @@ html{scroll-padding-top:76px}
       <p>Sie möchten Ihr Auto verkaufen oder eintauschen? Wir schauen es uns an, machen ein ehrliches Angebot und erledigen die Formalitäten.</p>
       <a class="btn btn-o" href="tel:+41710000000">Unverbindlich anfragen</a>
     </div>
-    <div class="foto rise"><img src="img/gebaeude.jpg" alt="Dunkles Garagengebäude mit orangen Rahmen und Glastoren" loading="lazy" width="1800" height="1125"></div>
+    <div class="foto rise"><img src="img/gebaeude.jpg" alt="Weisses Garagengebäude mit blauen Akzenten und Glasfront" loading="lazy" width="1800" height="1125"></div>
   </div>
 </section>
 
@@ -653,7 +653,7 @@ html{scroll-padding-top:76px}
         <p class="lead" style="margin-top:18px">Service, Reparaturen und MFK für alle Marken – vom Familienkombi bis zum Sportwagen. Moderne Diagnose und ein Team, das gerne schraubt.</p>
         <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-o" href="tel:+41710000000">Termin vereinbaren</a><a class="btn btn-d" href="mailto:info@kalvaro.example">info@kalvaro.example</a></div>
       </div>
-      <div class="foto rise"><img src="img/werkstatt_1.jpg" alt="Werkstatt mit Hebebühnen und orangen Säulen" loading="lazy" width="1400" height="875"></div>
+      <div class="foto rise"><img src="img/werkstatt_1.jpg" alt="Helle Werkstatt mit blauen Hebebühnen" loading="lazy" width="1400" height="875"></div>
     </div>
     <div class="dienste">
       <div class="dienst rise"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 5a7 7 0 0 0-8.6 9L5 21.4a2.8 2.8 0 0 0 4 4L16.6 18a7 7 0 0 0 9-8.6l-4 4-3.5-1-1-3.5z"/></svg><h3>Service</h3><p>Ölwechsel, Filter, Bremsen und alles nach Herstellervorgabe – mit Serviceheft-Eintrag.</p></div>
@@ -688,9 +688,9 @@ html{scroll-padding-top:76px}
       <figure class="rise"><img src="img/leg_4.jpg" alt="Dunkelblauer Ferrari der 70er-Jahre" loading="lazy" width="1200" height="900"><figcaption>Ferrari 365 GTB/4</figcaption></figure>
       <figure class="rise"><img src="img/leg_5.jpg" alt="Schwarzer klassischer Porsche 911" loading="lazy" width="1200" height="900"><figcaption>Porsche 911 (G-Modell)</figcaption></figure>
       <figure class="rise"><img src="img/leg_6.jpg" alt="Weisser Ford Escort RS Cosworth" loading="lazy" width="1200" height="900"><figcaption>Ford Escort RS Cosworth</figcaption></figure>
-      <figure class="rise"><img src="img/empfang.jpg" alt="Heller Empfang mit Glasfront" loading="lazy" width="1400" height="1050"><figcaption>Unser Empfang</figcaption></figure>
-      <figure class="rise"><img src="img/werkstatt_2.jpg" alt="Werkstatt mit Hebebühne und Werkbank" loading="lazy" width="1400" height="875"><figcaption>In der Werkstatt</figcaption></figure>
-      <figure class="rise"><img src="img/gebaeude.jpg" alt="Garagengebäude im Abendlicht" loading="lazy" width="1800" height="1125"><figcaption>Kalvaroweg 1</figcaption></figure>
+      <figure class="rise"><img src="img/empfang.jpg" alt="Heller Empfang mit blauer Wand" loading="lazy" width="1400" height="1050"><figcaption>Unser Empfang</figcaption></figure>
+      <figure class="rise"><img src="img/werkstatt_2.jpg" alt="Werkstatt mit blauen Hebebühnen und Werkbank" loading="lazy" width="1400" height="875"><figcaption>In der Werkstatt</figcaption></figure>
+      <figure class="rise"><img src="img/gebaeude.jpg" alt="Weisses Garagengebäude mit blauem Dach" loading="lazy" width="1800" height="1125"><figcaption>Kalvaroweg 1</figcaption></figure>
     </div>
   </div>
 </section>
@@ -798,17 +798,17 @@ var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* ---------- Daten: Beispielangebote (fiktiv) ---------- */
 var AUTOS=[
  {id:2,m:"Audi",t:"Q7 50 TDI quattro",d:"05.2018",km:112000,ps:286,f:"Diesel",g:"Automat",p:38900,b:["Frisch ab MFK"]},
- {id:1,m:"Cupra",t:"Ateca 2.0 TSI 4Drive",d:"03.2019",km:78000,ps:300,f:"Benzin",g:"Automat",p:26900,b:["Garantie"]},
+ {id:12,m:"Toyota",t:"Hilux 2.4 D-4D 4x4",d:"03.2017",km:132000,ps:150,f:"Diesel",g:"Schaltgetriebe",p:24900,b:["Garantie"]},
  {id:9,m:"Toyota",t:"GT86 2.0",d:"06.2017",km:54000,ps:200,f:"Benzin",g:"Schaltgetriebe",p:22500,b:[]},
- {id:10,m:"Nissan",t:"350Z GT",d:"04.2005",km:108000,ps:280,f:"Benzin",g:"Schaltgetriebe",p:15900,b:["Preis gesenkt"],alt:16900},
+ {id:11,m:"Mazda",t:"MX-5 2.0 Skyactiv-G",d:"05.2017",km:41000,ps:160,f:"Benzin",g:"Schaltgetriebe",p:21900,b:[]},
+ {id:3,m:"Opel",t:"Grandland X 1.2 Turbo",d:"09.2019",km:68000,ps:130,f:"Benzin",g:"Automat",p:18900,b:["Frisch ab MFK"]},
+ {id:6,m:"VW",t:"Passat Variant 2.0 TDI",d:"02.2018",km:121000,ps:150,f:"Diesel",g:"Automat",p:17900,b:[]},
  {id:8,m:"Nissan",t:"350Z",d:"09.2006",km:89000,ps:300,f:"Benzin",g:"Schaltgetriebe",p:17900,b:[]},
- {id:12,m:"Nissan",t:"Navara 2.5 dCi 4x4",d:"02.2014",km:148000,ps:190,f:"Diesel",g:"Schaltgetriebe",p:16900,b:["Frisch ab MFK"]},
- {id:11,m:"Mazda",t:"MX-5 2.0 Roadster",d:"05.2008",km:92000,ps:160,f:"Benzin",g:"Schaltgetriebe",p:12900,b:[]},
- {id:3,m:"Nissan",t:"Qashqai 1.6",d:"07.2012",km:134000,ps:117,f:"Benzin",g:"Schaltgetriebe",p:8900,b:["Frisch ab MFK"]},
- {id:5,m:"Honda",t:"Jazz 1.4",d:"03.2010",km:98000,ps:100,f:"Benzin",g:"Schaltgetriebe",p:6900,b:[]},
- {id:6,m:"VW",t:"Passat Variant 1.8 T",d:"10.2003",km:186000,ps:150,f:"Benzin",g:"Schaltgetriebe",p:4900,b:[]},
- {id:4,m:"Toyota",t:"Yaris 1.3",d:"08.2004",km:121000,ps:87,f:"Benzin",g:"Schaltgetriebe",p:4500,b:[]},
- {id:7,m:"Subaru",t:"Legacy 2.0 AWD Kombi",d:"11.2002",km:201000,ps:125,f:"Benzin",g:"Schaltgetriebe",p:4200,b:["Dachbox inklusive"]}
+ {id:7,m:"Škoda",t:"Octavia Combi 2.0 TDI",d:"10.2016",km:139000,ps:150,f:"Diesel",g:"Schaltgetriebe",p:12500,b:["Frisch ab MFK"]},
+ {id:1,m:"Honda",t:"CR-V 2.0 i-VTEC 4WD",d:"05.2011",km:142000,ps:150,f:"Benzin",g:"Schaltgetriebe",p:11900,b:[]},
+ {id:5,m:"VW",t:"up! 1.0",d:"06.2016",km:58000,ps:60,f:"Benzin",g:"Schaltgetriebe",p:8500,b:[]},
+ {id:10,m:"Honda",t:"Civic Coupé 1.8",d:"03.2008",km:118000,ps:140,f:"Benzin",g:"Schaltgetriebe",p:6900,b:["Preis gesenkt"],alt:7900},
+ {id:4,m:"Fiat",t:"Panda 1.2",d:"04.2012",km:96000,ps:69,f:"Benzin",g:"Schaltgetriebe",p:5400,b:[]}
 ];
 function chf(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,"’")}
 var box=D.getElementById('autos');
@@ -853,11 +853,11 @@ else { himg.addEventListener('load',torAuf,{once:true}); himg.addEventListener('
 
 /* ---------- Wechselnde Autos im Tor ---------- */
 var DIAS=[
- {f:'hero_2',fm:'hero_2_m',k:'Schon bei uns verkauft',t:'Toyota GR Supra · Kalvaroweg 1',h:'#bewertungen',a:'Gelbes Sportcoupé vor dem dunklen Garagengebäude mit Glastoren',op:'50% 62%',opm:'50% 62%'},
- {f:'hero_1',fm:'hero_1_m',k:'Schon bei uns verkauft',t:'Subaru BRZ · Kalvaroweg 1',h:'#bewertungen',a:'Weisses Sportcoupé vor dem Garagengebäude, Berge im Hintergrund',op:'50% 62%',opm:'50% 62%'},
- {f:'hero_3',fm:'hero_3_m',k:'Schon bei uns verkauft',t:'BMW 5er · Kalvaroweg 1',h:'#bewertungen',a:'Dunkelblaue Limousine vor dem Garagengebäude im Abendlicht',op:'50% 62%',opm:'50% 62%'},
- {f:'hero_4',fm:'hero_4_m',k:'Schon bei uns verkauft',t:'Audi RS 4 Avant · Kalvaroweg 1',h:'#bewertungen',a:'Grauer Sportkombi vor dem Garagengebäude',op:'50% 62%',opm:'50% 62%'},
- {f:'hero_5',fm:'hero_5_m',k:'Schon bei uns verkauft',t:'Mazda MX-5 · Kalvaroweg 1',h:'#bewertungen',a:'Roter Roadster der 90er-Jahre vor dem offenen Garagentor',op:'50% 66%',opm:'50% 66%'}
+ {f:'hero_1',fm:'hero_1_m',k:'Jetzt bei uns',t:'Toyota GT86 · CHF 22’500.–',h:'#auto-9',a:'Graues Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen',op:'50% 60%',opm:'50% 60%'},
+ {f:'hero_2',fm:'hero_2_m',k:'Jetzt bei uns',t:'Mazda MX-5 · CHF 21’900.–',h:'#auto-11',a:'Weisser Roadster vor der Glasfront der Garage',op:'50% 60%',opm:'50% 60%'},
+ {f:'hero_3',fm:'hero_3_m',k:'Jetzt bei uns',t:'Audi Q7 · CHF 38’900.–',h:'#auto-2',a:'Schwarzer SUV vor dem weissen Garagengebäude',op:'50% 60%',opm:'50% 60%'},
+ {f:'hero_4',fm:'hero_4_m',k:'Jetzt bei uns',t:'Opel Grandland X · CHF 18’900.–',h:'#auto-3',a:'Weisser SUV vor der Garage mit blauen Akzenten',op:'50% 60%',opm:'50% 60%'},
+ {f:'hero_5',fm:'hero_5_m',k:'Jetzt bei uns',t:'Toyota Hilux · CHF 24’900.–',h:'#auto-12',a:'Grauer Pickup vor dem weissen Garagengebäude',op:'50% 60%',opm:'50% 60%'}
 ];
 var diasEl=tor.querySelector('.dias'), schild=D.getElementById('schild'), punkte=D.getElementById('punkte'), diaNav=D.getElementById('dia-nav');
 var diaImgs=[himg], diaI=0, diaT=null, diaPause=false, diaGestartet=false;

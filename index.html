@@ -482,6 +482,94 @@ html{scroll-padding-top:76px}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 .logo-txt{display:flex;flex-direction:column;line-height:1;text-decoration:none;color:#fff}.logo-txt b{font-family:var(--kopf);font-weight:700;font-style:italic;font-size:30px;letter-spacing:.08em;color:var(--akzent)}.logo-txt small{font-family:var(--body);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#b5b8bd;margin-top:3px}
+/* ---------- Filter (Occasionen) ---------- */
+.filter{display:flex;flex-direction:column}
+.f-kopf{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.f-kopf .frage{margin:0}
+.f-zu{display:none;width:40px;height:40px;border-radius:50%;border:1.5px solid #3c3f45;color:#fff;place-items:center;transition:border-color .2s, box-shadow .2s}
+.f-zu svg{width:18px;height:18px}
+.tacho-wrap{margin-top:6px}
+.filter #tacho{max-height:210px;min-height:0;width:auto;max-width:100%}
+.f-zeile{display:block;margin-top:4px;font-size:14px;font-weight:600;color:#cfd2d6}
+.f-zeile b{float:right;font-family:var(--kopf);font-size:18px;color:#fff;letter-spacing:.03em}
+.f-zeile .schieber{margin-top:6px}
+.f-felder{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.f-sel{display:flex;flex-direction:column;gap:5px;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:#9a9ea5;text-transform:uppercase}
+.f-sel select,.e-sort select{appearance:none;-webkit-appearance:none;font:inherit;font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;color:#fff;background:#0d0e10 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cfd2d6' stroke-width='2.4'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center/16px;border:1.5px solid #3c3f45;border-radius:10px;min-height:44px;padding:0 34px 0 12px;cursor:pointer;transition:border-color .2s, box-shadow .2s;width:100%}
+.f-sel select.an{border-color:var(--akzent);box-shadow:0 0 0 3px rgba(25,184,255,.16)}
+@media (hover:hover){.ready .f-sel select:hover,.ready .e-sort select:hover{border-color:rgba(111,211,255,.8)}}
+.f-gruppe{margin-top:14px}
+.f-titel{display:block;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:#9a9ea5;text-transform:uppercase;margin-bottom:6px}
+.f-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#0d0e10;border-radius:12px;padding:4px}
+.f-seg button{min-height:40px;border-radius:9px;font-family:var(--kopf);font-weight:700;font-size:16px;letter-spacing:.04em;color:#9a9ea5;transition:color .2s, box-shadow .2s, background-color .2s}
+.f-seg button[aria-pressed="true"]{background:var(--stahl2);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(25,184,255,.65)}
+.f-chips{display:flex;flex-wrap:wrap;gap:6px}
+.f-chip{min-height:36px;padding:0 12px;border-radius:999px;border:1.5px solid #3c3f45;color:#cfd2d6;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:border-color .2s, box-shadow .2s, background-color .2s, color .2s, transform .15s}
+.f-chip small{font-size:12px;color:#8d9198;font-weight:600}
+.f-chip[aria-pressed="true"]{border-color:var(--akzent);background:#0e2432;color:#fff}
+.f-chip[aria-pressed="true"] small{color:#6FD3FF}
+.f-chip:disabled{opacity:.35;cursor:default}
+.f-chip:active:not(:disabled),.f-seg button:active{transform:scale(.97)}
+@media (hover:hover){.ready .f-chip:not(:disabled):hover,.ready .f-seg button:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(25,184,255,.45)}.ready .f-zu:hover{border-color:var(--akzent)}}
+.f-zeigen{display:none}
+.filter .anfrage{margin-top:18px}
+.ergebnis{min-width:0}
+.e-kopf{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;margin-bottom:10px}
+.e-zahl{font-family:var(--kopf);font-weight:700;font-size:22px;letter-spacing:.03em;color:#fff}
+.e-zahl b{color:var(--akzent)}
+.e-sort{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#9a9ea5}
+.e-sort select{width:auto;min-width:200px}
+.f-oeffnen{display:none;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;background:var(--akzent);color:#041019;font-family:var(--kopf);font-weight:700;font-size:17px;letter-spacing:.06em;text-transform:uppercase;transition:box-shadow .2s, transform .15s}
+.f-oeffnen svg{width:18px;height:18px}
+.f-oeffnen:active{transform:scale(.97)}
+.e-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;min-height:0}
+.e-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 8px 6px 12px;border-radius:999px;background:#0e2432;border:1.5px solid rgba(25,184,255,.7);color:#fff;font-size:14px;font-weight:600;transition:box-shadow .2s, transform .15s}
+.e-chip svg{width:14px;height:14px}
+.e-chip i{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.1)}
+.e-chip:active{transform:scale(.97)}
+.e-reset{font-size:14px;font-weight:600;color:#cfd2d6;padding:6px 12px;border-radius:999px;border:1.5px dashed #4a4e55;transition:border-color .2s, color .2s}
+@media (hover:hover){.ready .e-chip:hover{box-shadow:0 0 0 3px rgba(25,184,255,.2)}.ready .e-reset:hover{border-color:var(--akzent);color:#fff}.ready .f-oeffnen:hover{box-shadow:var(--glow)}}
+.auto[hidden]{display:none}
+.auto.rein{animation:karteRein .4s ease both}
+@keyframes karteRein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.leer{border:1.5px dashed #4a4e55;border-radius:var(--r);padding:28px 24px;color:#cfd2d6;max-width:640px}
+.leer-t{font-family:var(--kopf);font-weight:700;font-size:26px;color:#fff;margin-bottom:6px}
+.leer-k{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.leer .btn svg{width:20px;height:20px}
+@media (max-width:1020px){
+  .f-huelle{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .3s ease}
+  .f-huelle.offen{opacity:1;pointer-events:auto}
+  .f-huelle .instrument.filter{position:absolute;top:0;right:0;bottom:0;width:min(440px,100%);max-width:none;margin:0;border-radius:0;max-height:none;overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.7,.2,1);padding:16px 18px 0}
+  .f-huelle.offen .instrument.filter{transform:none}
+  .f-zu{display:grid}
+  .f-zeigen{display:flex;position:sticky;bottom:0;width:calc(100% + 36px);margin:18px -18px 0;border-radius:0;justify-content:center;min-height:58px;z-index:2}
+  .filter .anfrage,.filter .anfrage-info,.filter .hinweis{display:none}
+  .f-oeffnen{display:inline-flex}
+  .e-kopf{position:sticky;top:112px;z-index:20;background:rgba(28,30,33,.94);backdrop-filter:blur(8px);margin:0 -20px 10px;padding:10px 20px}
+  .e-zahl{font-size:18px}
+  .e-sort{margin-left:0;width:100%}
+  .e-sort select{flex:1;min-width:0}
+}
+.f-chip.null{opacity:.45}
+.f-chip.null[aria-pressed="true"]{opacity:1}
+.filter #tacho{max-height:250px}
+.filter #tacho .wert-u{font-size:20px}
+.filter #tacho .wert-k{font-size:21px}
+.filter #tacho .nabe{cursor:inherit}
+.ready .filter #tacho:hover .nabe{filter:none}
+.e-zahl .kurz{display:none}
+@media (min-width:1021px){.f-huelle{position:sticky;top:96px;align-self:start}.f-huelle .instrument{position:relative;top:0}}
+@media (max-width:1020px){
+  .f-huelle .instrument.filter{display:flex;flex-direction:column}
+  .f-zeigen{margin-top:auto}
+  .f-huelle .instrument.filter .f-gruppe:last-of-type{margin-bottom:18px}
+  .e-kopf{flex-wrap:nowrap;gap:10px}
+  .e-sort{width:auto;margin-left:auto;flex:0 1 auto;min-width:0}
+  .e-sort span{display:none}
+  .e-sort select{min-width:0;width:auto;max-width:190px}
+}
+@media (max-width:480px){.e-zahl .lang{display:none}.e-zahl .kurz{display:inline}.e-sort select{max-width:160px;font-size:14px}.f-oeffnen{padding:0 13px}}
+@media (max-height:500px){.e-kopf{position:static}}
 </style>
 </head>
 <body>
@@ -531,7 +619,7 @@ html{scroll-padding-top:76px}
       <div class="rechts">
         <div class="knoepfe">
           <a class="btn btn-o" href="tel:+41710000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>071 000 00 00</a>
-          <a class="btn btn-r" href="#occasionen">12 Occasionen</a>
+          <a class="btn btn-r" href="#occasionen">11 Occasionen</a>
         </div>
         <div class="fakten">
           <a class="fakt" href="https://www.google.com/maps/dir/?api=1&amp;destination=Heerbrugg+SG" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 22s-7.5-6.6-7.5-12.3a7.5 7.5 0 0 1 15 0C19.5 15.4 12 22 12 22z"/><circle cx="12" cy="9.6" r="2.8" fill="#0F1012"/></svg>Kalvaroweg 1, 9435 Heerbrugg</a>
@@ -550,18 +638,16 @@ html{scroll-padding-top:76px}
     <div class="kopfzeile rise">
       <div>
         <div class="kicker">Occasionen</div>
-        <h2>Welches Auto passt zu Ihrem Budget?</h2>
+        <h2>Welches Auto passt zu Ihnen?</h2>
       </div>
-      <p>Stellen Sie am Instrument Ihr Budget ein, als Kaufpreis oder pro Monat. Die passenden Autos leuchten, knappe sind markiert. Ein Klick aufs Auto zeigt die Details.</p>
+      <p>Filtern Sie nach Preis, Marke, Kilometern und mehr – die Liste passt sich sofort an. Den Preis stellen Sie auch direkt am Instrument ein.</p>
     </div>
     <div class="occ-grid">
-      <div class="instrument rise" id="instrument">
-        <p class="frage">Was darf Ihr nächstes Auto kosten?</p>
-        <div class="modus" role="group" aria-label="Budget angeben als">
-          <button type="button" data-modus="kauf" aria-pressed="true">Kaufpreis</button>
-          <button type="button" data-modus="monat" aria-pressed="false">Monatlich</button>
-        </div>
-        <svg id="tacho" viewBox="0 0 400 400" role="slider" tabindex="0" aria-label="Budget einstellen" aria-valuemin="0" aria-valuemax="200000" aria-valuenow="30000">
+      <div class="f-huelle" id="f-huelle">
+      <aside class="instrument filter" id="instrument" aria-label="Autos filtern">
+        <div class="f-kopf"><p class="frage">Ihr nächstes Auto finden</p><button type="button" class="f-zu" id="f-zu" aria-label="Filter schliessen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+        <div class="tacho-wrap">
+        <svg id="tacho" viewBox="0 0 400 400" role="slider" tabindex="0" aria-label="Preis bis" aria-valuemin="0" aria-valuemax="200000" aria-valuenow="200000">
           <defs>
             <radialGradient id="glas" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#2b2e33"/><stop offset="1" stop-color="#101113"/></radialGradient>
             <filter id="nglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -570,9 +656,8 @@ html{scroll-padding-top:76px}
           <path id="bogen-grund" fill="none" stroke="#2d3035" stroke-width="10" stroke-linecap="round"/>
           <path id="bogen-aktiv" class="bogen-aktiv" fill="none" stroke="#19B8FF" stroke-width="10" stroke-linecap="round"/>
           <g id="skala"></g>
-          <text class="einheit" id="einheit" x="200" y="140" text-anchor="middle"></text>
-          <text class="wert-k" id="wert-k" x="200" y="250" text-anchor="middle">BIS CHF 30’000</text>
-          <text class="wert" id="wert" x="200" y="300" text-anchor="middle">11</text>
+          <text class="wert-k" id="wert-k" x="200" y="146" text-anchor="middle">PREIS BIS</text>
+          <text class="wert" id="wert" x="200" y="300" text-anchor="middle">alle</text>
           <text class="wert-u" id="wert-u" x="200" y="322" text-anchor="middle"></text>
           <g id="nadel" filter="url(#nglow)">
             <path d="M196 200 L200 58 L204 200 Z" fill="#19B8FF"/>
@@ -580,36 +665,40 @@ html{scroll-padding-top:76px}
           </g>
           <circle class="nabe" cx="200" cy="200" r="20" fill="#1a1b1e" stroke="#4a4e54" stroke-width="3"/>
         </svg>
-        <input class="schieber" id="schieber" type="range" min="0" max="200000" step="1000" value="30000" aria-label="Budget">
-        <div class="monat-felder" id="monat-felder" hidden>
-          <label class="feld">Anzahlung <b id="anz-w">CHF 5’000</b><input type="range" id="anz" min="0" max="30000" step="1000" value="5000"></label>
-          <div class="feld">Laufzeit
-            <div class="lz" role="group" aria-label="Laufzeit in Monaten">
-              <button type="button" data-lz="24" aria-pressed="false">24</button><button type="button" data-lz="36" aria-pressed="false">36</button><button type="button" data-lz="48" aria-pressed="true">48</button><button type="button" data-lz="60" aria-pressed="false">60</button>
-            </div>
-          </div>
-          <p class="richtwert">= Kaufpreis bis ca. <b id="kauf-aus-monat">CHF 24’200</b><br>Richtwert ohne Zins, kein Leasing-Angebot. Finanzierung und Leasing auf Anfrage.<small>Die Kreditvergabe ist verboten, falls sie zur Überschuldung der Konsumentin oder des Konsumenten führt (Art. 3 UWG).</small></p>
         </div>
-        <div class="feld sport">Wie sportlich?
-          <div class="sport-w" role="group" aria-label="Mindestleistung">
-            <button type="button" data-ps="0" aria-pressed="true">Egal</button><button type="button" data-ps="190" aria-pressed="false">ab 190 PS</button><button type="button" data-ps="300" aria-pressed="false">ab 300 PS</button>
-          </div>
+        <label class="f-zeile">Preis bis <b id="preis-w">alle</b><input class="schieber" id="schieber" type="range" min="5000" max="200000" step="1000" value="200000" aria-label="Preis bis in CHF"></label>
+        <div class="f-felder">
+          <label class="f-sel">Marke<select id="f-marke"><option value="">Alle Marken</option></select></label>
+          <label class="f-sel">Kilometer bis<select id="f-km"><option value="">beliebig</option><option value="25000">25’000 km</option><option value="50000">50’000 km</option><option value="100000">100’000 km</option><option value="150000">150’000 km</option><option value="200000">200’000 km</option></select></label>
+          <label class="f-sel">Jahrgang ab<select id="f-jahr"><option value="">beliebig</option><option value="1980">1980</option><option value="1990">1990</option><option value="2000">2000</option><option value="2010">2010</option><option value="2015">2015</option><option value="2018">2018</option><option value="2020">2020</option><option value="2023">2023</option></select></label>
+          <label class="f-sel">PS ab<select id="f-ps"><option value="">beliebig</option><option value="100">100 PS</option><option value="150">150 PS</option><option value="200">200 PS</option><option value="300">300 PS</option><option value="400">400 PS</option><option value="500">500 PS</option></select></label>
         </div>
-        <div class="anzeige"><div class="treffer" id="treffer"></div></div>
+        <div class="f-gruppe"><span class="f-titel">Getriebe</span>
+          <div class="f-seg" id="f-getriebe" role="group" aria-label="Getriebe"><button type="button" data-w="" aria-pressed="true">Alle</button><button type="button" data-w="Automat" aria-pressed="false">Automat</button><button type="button" data-w="Manuell" aria-pressed="false">Manuell</button></div>
+        </div>
+        <div class="f-gruppe"><span class="f-titel">Treibstoff</span><div class="f-chips" id="f-treib" role="group" aria-label="Treibstoff"></div></div>
+        <div class="f-gruppe"><span class="f-titel">Karosserie</span><div class="f-chips" id="f-karo" role="group" aria-label="Karosserie"></div></div>
+        <button type="button" class="btn btn-o f-zeigen" id="f-zeigen">Autos anzeigen</button>
         <a class="btn btn-o anfrage" id="anfrage" href="mailto:info@kalvaro.example">Probefahrt anfragen</a>
-        <p class="anfrage-info" id="anfrage-info">E-Mail mit Ihrem Budget und Ihren Top 3 aus der Auswahl</p>
+        <p class="anfrage-info" id="anfrage-info">E-Mail mit Ihren Filtern und Ihren Top 3</p>
         <p class="hinweis">oder anrufen: <a href="tel:+41710000000">071 000 00 00</a></p>
+      </aside>
       </div>
 
-      <div>
-        <div class="mini" id="mini" aria-hidden="true">
-          <div class="mw" id="mini-w">bis CHF 30’000<small id="mini-t"></small></div>
-          <input type="range" id="mini-s" min="0" max="200000" step="1000" value="30000" tabindex="-1" aria-label="Budget">
+      <div class="ergebnis">
+        <div class="e-kopf">
+          <button type="button" class="f-oeffnen" id="f-oeffnen" aria-controls="instrument" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filter<span id="f-anz"></span></button>
+          <p class="e-zahl" id="treffer" aria-live="polite"><b>11</b> von 11 Autos</p>
+          <label class="e-sort"><span>Sortieren</span><select id="f-sort" aria-label="Sortieren"><option value="neu">Neu eingetroffen</option><option value="preis-auf">Preis aufsteigend</option><option value="preis-ab">Preis absteigend</option><option value="km">Kilometer</option><option value="jahr">Jahrgang (neueste)</option></select></label>
         </div>
+        <div class="e-chips" id="e-chips"></div>
         <div class="autos" id="autos"></div>
-        <div class="quelle">
-          <span>Beispielangebote · Musterentwurf, Angaben und Preise fiktiv.</span>
+        <div class="leer" id="leer" hidden>
+          <p class="leer-t">Kein Auto passt zu allen Filtern.</p>
+          <p>Wir haben laufend neue Occasionen. Schicken Sie uns Ihren Suchauftrag – wir melden uns, sobald etwas Passendes da ist.</p>
+          <div class="leer-k"><a class="btn btn-o" id="wa" href="https://wa.me/41710000000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.1.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>Suchauftrag per WhatsApp</a><button type="button" class="btn btn-r leer-r" id="leer-reset">Filter zurücksetzen</button></div>
         </div>
+        <div class="quelle"><span>Beispielangebote · Musterentwurf, Angaben und Preise fiktiv.</span></div>
       </div>
     </div>
   </div>
@@ -797,30 +886,31 @@ var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- Daten: Beispielangebote (fiktiv) ---------- */
 var AUTOS=[
- {id:2,m:"Audi",t:"Q7 50 TDI quattro",d:"05.2018",km:112000,ps:286,f:"Diesel",g:"Automat",p:38900,b:["Frisch ab MFK"]},
- {id:12,m:"Toyota",t:"Hilux 2.4 D-4D 4x4",d:"03.2017",km:132000,ps:150,f:"Diesel",g:"Schaltgetriebe",p:24900,b:["Garantie"]},
- {id:9,m:"Toyota",t:"GT86 2.0",d:"06.2017",km:54000,ps:200,f:"Benzin",g:"Schaltgetriebe",p:22500,b:[]},
- {id:11,m:"Mazda",t:"MX-5 2.0 Skyactiv-G",d:"05.2017",km:41000,ps:160,f:"Benzin",g:"Schaltgetriebe",p:21900,b:[]},
- {id:3,m:"Opel",t:"Grandland X 1.2 Turbo",d:"09.2019",km:68000,ps:130,f:"Benzin",g:"Automat",p:18900,b:["Frisch ab MFK"]},
- {id:6,m:"VW",t:"Passat Variant 2.0 TDI",d:"02.2018",km:121000,ps:150,f:"Diesel",g:"Automat",p:17900,b:[]},
- {id:8,m:"Nissan",t:"350Z",d:"09.2006",km:89000,ps:300,f:"Benzin",g:"Schaltgetriebe",p:17900,b:[]},
- {id:7,m:"Škoda",t:"Octavia Combi 2.0 TDI",d:"10.2016",km:139000,ps:150,f:"Diesel",g:"Schaltgetriebe",p:12500,b:["Frisch ab MFK"]},
- {id:1,m:"Honda",t:"CR-V 2.0 i-VTEC 4WD",d:"05.2011",km:142000,ps:150,f:"Benzin",g:"Schaltgetriebe",p:11900,b:[]},
- {id:5,m:"VW",t:"up! 1.0",d:"06.2016",km:58000,ps:60,f:"Benzin",g:"Schaltgetriebe",p:8500,b:[]},
- {id:10,m:"Honda",t:"Civic Coupé 1.8",d:"03.2008",km:118000,ps:140,f:"Benzin",g:"Schaltgetriebe",p:6900,b:["Preis gesenkt"],alt:7900},
- {id:4,m:"Fiat",t:"Panda 1.2",d:"04.2012",km:96000,ps:69,f:"Benzin",g:"Schaltgetriebe",p:5400,b:[]}
+ {id:2,m:"Audi",t:"Q7 50 TDI quattro",d:"05.2018",km:112000,ps:286,f:"Diesel",ft:"Diesel",g:"Automat",k:"SUV",p:38900,b:["Frisch ab MFK"]},
+ {id:12,m:"Toyota",t:"Hilux 2.5 D-4D 4x4",d:"03.2014",km:132000,ps:144,f:"Diesel",ft:"Diesel",g:"Manuell",k:"Pick-up",p:24900,b:["Garantie"]},
+ {id:9,m:"Toyota",t:"GT86 2.0",d:"06.2017",km:54000,ps:200,f:"Benzin",ft:"Benzin",g:"Manuell",k:"Coupé",p:22500,b:[]},
+ {id:11,m:"Mazda",t:"MX-5 2.0 Skyactiv-G",d:"05.2017",km:41000,ps:160,f:"Benzin",ft:"Benzin",g:"Manuell",k:"Cabrio",p:21900,b:[]},
+ {id:3,m:"Opel",t:"Grandland X 1.2 Turbo",d:"09.2019",km:68000,ps:130,f:"Benzin",ft:"Benzin",g:"Automat",k:"SUV",p:18900,b:["Frisch ab MFK"]},
+ {id:6,m:"VW",t:"Passat Variant 2.0 TDI",d:"02.2018",km:121000,ps:150,f:"Diesel",ft:"Diesel",g:"Automat",k:"Kombi",p:17900,b:[]},
+ {id:7,m:"Škoda",t:"Octavia Combi 2.0 TDI",d:"10.2016",km:139000,ps:150,f:"Diesel",ft:"Diesel",g:"Manuell",k:"Kombi",p:12500,b:["Frisch ab MFK"]},
+ {id:1,m:"Honda",t:"CR-V 2.0 i-VTEC 4WD",d:"05.2011",km:142000,ps:150,f:"Benzin",ft:"Benzin",g:"Manuell",k:"SUV",p:11900,b:[]},
+ {id:5,m:"VW",t:"up! 1.0",d:"06.2016",km:58000,ps:60,f:"Benzin",ft:"Benzin",g:"Manuell",k:"Kleinwagen",p:8500,b:[]},
+ {id:10,m:"Honda",t:"Civic Coupé 1.7",d:"03.2004",km:118000,ps:125,f:"Benzin",ft:"Benzin",g:"Manuell",k:"Coupé",p:6900,b:["Preis gesenkt"],alt:7900},
+ {id:4,m:"Fiat",t:"Panda 1.2",d:"04.2012",km:96000,ps:69,f:"Benzin",ft:"Benzin",g:"Manuell",k:"Kleinwagen",p:5400,b:[]}
 ];
+var KONTAKT={tel:'+41710000000',wa:'41710000000',mail:'info@kalvaro.example',anrede:'Grüezi Herr Wyss',max:50000,link:function(a){return '#zeiten'},extern:false,hervor:["Garantie","Preis gesenkt"]};
 function chf(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,"’")}
+function jahrVon(a){return +a.d.split('.')[1]}
 var box=D.getElementById('autos');
 box.innerHTML=AUTOS.map(function(a){
-  var badges=a.b.map(function(x,i){return '<span'+(x==="Garantie"||x==="Preis gesenkt"?' class="o"':'')+'>'+x+'</span>'}).join('');
-  var daten=['1. Inv. '+a.d, chf(a.km)+' km', a.f, a.g].filter(Boolean).map(function(x){return '<span>'+x+'</span>'}).join('');
-  return '<article class="auto rise'+(a.id===2?' gross':'')+'" id="auto-'+a.id+'" data-ps="'+(a.ps||'')+'" data-p="'+a.p+'">'+
+  var badges=a.b.map(function(x){return '<span'+(KONTAKT.hervor.indexOf(x)>=0?' class="o"':'')+'>'+x+'</span>'}).join('');
+  var daten=['1. Inv. '+a.d, chf(a.km)+' km', a.f, a.g==='Manuell'?'Schaltgetriebe':'Automat', a.k].map(function(x){return '<span>'+x+'</span>'}).join('');
+  return '<article class="auto rise" id="auto-'+a.id+'">'+
     '<div class="foto"><img src="img/car_'+a.id+'.jpg" alt="'+a.m+' '+a.t+'" loading="lazy" width="900" height="675"></div>'+
     (badges?'<div class="marken">'+badges+'</div>':'')+
-    '<div class="info"><div class="marke">'+a.m+'</div><h3><a class="ganz" href="#instrument">'+a.t+'</a></h3><div class="daten">'+daten+'</div>'+
-    '<div class="preis"><b>CHF '+chf(a.p)+'.–</b>'+(a.alt?'<s>CHF '+chf(a.alt)+'.–</s>':'')+(a.ps?'<span class="ps">'+a.ps+' PS</span>':'')+'</div>'+
-    '<div class="aktion"><a class="anruf" href="tel:+41710000000" aria-label="Anrufen für eine Probefahrt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Probefahrt</a><span class="inserat">Details&nbsp;→</span></div></div></article>';
+    '<div class="info"><div class="marke">'+a.m+'</div><h3><a class="ganz" href="'+KONTAKT.link(a)+'"'+(KONTAKT.extern?' target="_blank" rel="noopener"':'')+'>'+a.t+'</a></h3><div class="daten">'+daten+'</div>'+
+    '<div class="preis"><b>CHF '+chf(a.p)+'.–</b>'+(a.alt?'<s>CHF '+chf(a.alt)+'.–</s>':'')+'<span class="ps">'+(a.ps?a.ps+' PS':'PS k. A.')+'</span></div>'+
+    '<div class="aktion"><a class="anruf" href="tel:'+KONTAKT.tel+'" aria-label="Anrufen für eine Probefahrt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Probefahrt</a><span class="inserat">'+(KONTAKT.extern?'Inserat':'Details')+'&nbsp;→</span></div></div></article>';
 }).join('');
 
 /* ---------- Erscheinen (einmal), danach "live" für Hover ---------- */
@@ -900,163 +990,186 @@ if(window.matchMedia('(hover:hover)').matches){
 }
 D.addEventListener('visibilitychange',function(){ if(D.hidden) clearTimeout(diaT); else diaPlan(); });
 
-/* ---------- Budget-Rechner (Drehzahlmesser) ---------- */
+/* ---------- Filter mit Drehzahlmesser (Preis bis) ---------- */
 var svg=D.getElementById('tacho'), nadel=D.getElementById('nadel'), skala=D.getElementById('skala');
-var wertT=D.getElementById('wert'), wertK=D.getElementById('wert-k'), wertU=D.getElementById('wert-u'), einheit=D.getElementById('einheit');
-var schieber=D.getElementById('schieber'), miniS=D.getElementById('mini-s'), miniW=D.getElementById('mini-w');
-var treffer=D.getElementById('treffer'), autosEl=D.getElementById('autos'), anfrage=D.getElementById('anfrage');
-var anzEl=D.getElementById('anz'), anzW=D.getElementById('anz-w'), kaufAusMonat=D.getElementById('kauf-aus-monat'), monatFelder=D.getElementById('monat-felder');
-var karten=[].slice.call(autosEl.querySelectorAll('.auto'));
-var MODI={ kauf:{max:200000,step:1000,labels:6,start:30000,lab:function(v){return v?(v/1000)+'k':'0'}},
-           monat:{max:3000,step:50,labels:7,start:400,lab:function(v){return String(v)}} };
-var modus='kauf', wert={kauf:30000,monat:400}, anz=5000, lz=48, minPS=0, anzeigeWert=30000, busy=false, animId=0, zaehlerAlt=null;
-var CX=200, CY=200, R=160, A0=135, SW=270;
+var wertT=D.getElementById('wert'), wertK=D.getElementById('wert-k'), wertU=D.getElementById('wert-u');
+var schieber=D.getElementById('schieber'), preisW=D.getElementById('preis-w'), autosEl=D.getElementById('autos');
+var trefferEl=D.getElementById('treffer'), chipsEl=D.getElementById('e-chips'), leer=D.getElementById('leer'), anfrage=D.getElementById('anfrage');
+var karten={}; AUTOS.forEach(function(a){ karten[a.id]=D.getElementById('auto-'+a.id); });
+var MAX=KONTAKT.max||200000, MINP=5000, STEP=1000, CX=200, CY=200, R=160, A0=135, SW=270, anzeigeWert=MAX, animId=0, zieht=false;
+var leerF={preis:MAX,marke:'',km:'',jahr:'',ps:'',getriebe:'',treib:[],karo:[]};
+var F=JSON.parse(JSON.stringify(leerF)), sortierung='neu';
+var TREIB=['Benzin','Diesel','Hybrid','Elektro'], KARO=['Limousine','Kombi','SUV','Coupé','Cabrio','Kleinwagen','Van / Bus','Pick-up'];
 function pol(a,r){var t=a*Math.PI/180;return [CX+r*Math.cos(t),CY+r*Math.sin(t)]}
 function bogen(a1,a2,r){var p1=pol(a1,r),p2=pol(a2,r),gross=(a2-a1)>180?1:0;return 'M'+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+' A'+r+' '+r+' 0 '+gross+' 1 '+p2[0].toFixed(1)+' '+p2[1].toFixed(1)}
-function winkel(v){return A0+SW*Math.max(0,Math.min(1,v/MODI[modus].max))}
-function budget(){ return modus==='kauf' ? wert.kauf : anz + wert.monat*lz; }
-function zeichneSkala(){
-  var M=MODI[modus], h='', n=(M.labels-1)*2;
+function winkel(v){return A0+SW*Math.max(0,Math.min(1,v/MAX))}
+schieber.max=MAX; schieber.min=MINP; svg.setAttribute('aria-valuemax',MAX); svg.setAttribute('aria-valuemin',MINP);
+(function skalaZeichnen(){ var h='', n=10;
   D.getElementById('bogen-grund').setAttribute('d',bogen(A0,A0+SW,R));
-  for(var i=0;i<=n;i++){
-    var v=M.max*i/n, a=winkel(v), gross=i%2===0, p1=pol(a,R-(gross?26:18)), p2=pol(a,R-8);
+  for(var i=0;i<=n;i++){ var v=MAX*i/n, a=winkel(v), gross=i%2===0, p1=pol(a,R-(gross?26:18)), p2=pol(a,R-8);
     h+='<line class="tick" x1="'+p1[0].toFixed(1)+'" y1="'+p1[1].toFixed(1)+'" x2="'+p2[0].toFixed(1)+'" y2="'+p2[1].toFixed(1)+'" stroke-width="'+(gross?3:1.6)+'"/>';
-    if(gross){ var pl=pol(a,R-50); h+='<text class="zahl" x="'+pl[0].toFixed(1)+'" y="'+(pl[1]+8).toFixed(1)+'" text-anchor="middle">'+M.lab(Math.round(v))+'</text>'; }
-  }
-  skala.innerHTML=h; einheit.textContent='';
-  [schieber,miniS].forEach(function(s){s.max=M.max;s.step=M.step;});
-  svg.setAttribute('aria-valuemax',M.max);
-}
-/* Anzeige: Nadel, Bogen, Zahl */
-var trefferZahl=0;
+    if(gross){ var pl=pol(a,R-50); h+='<text class="zahl" x="'+pl[0].toFixed(1)+'" y="'+(pl[1]+8).toFixed(1)+'" text-anchor="middle">'+(v?(v/1000)+'k':'0')+'</text>'; } }
+  skala.innerHTML=h; })();
+var trefferZahl=AUTOS.length;
 function zeige(v,info){
-  var M=MODI[modus]; anzeigeWert=v;
-  nadel.setAttribute('transform','rotate('+(winkel(v)+90)+' '+CX+' '+CY+')');
+  anzeigeWert=v; nadel.setAttribute('transform','rotate('+(winkel(v)+90)+' '+CX+' '+CY+')');
   D.getElementById('bogen-aktiv').setAttribute('d', v>0? bogen(A0,winkel(v),R) : '');
-  var r=Math.round(v/M.step)*M.step;
   if(info){ wertK.textContent=info.k; wertT.textContent=info.w; wertU.textContent=info.u; wertT.style.fontSize=info.w.length>7?'34px':''; return; }
-  wertK.textContent = modus==='kauf' ? 'BIS CHF '+chf(r) : 'CHF '+chf(r)+' / MONAT';
+  var r=Math.round(v/STEP)*STEP;
+  wertK.textContent = r>=MAX ? 'PREIS: ALLE' : 'BIS CHF '+chf(r);
   wertT.textContent = String(trefferZahl); wertT.style.fontSize='';
-  wertU.textContent = (trefferZahl===1?'Auto passt':'Autos passen') + (modus==='monat' ? ' · bis ca. CHF '+chf(anz+r*lz) : '');
+  wertU.textContent = trefferZahl===1?'Auto passt':'Autos passen';
 }
-function stand(k,B){
-  var p=+k.dataset.p, ps=+k.dataset.ps||0;
-  if(minPS && ps<minPS) return 'aus';
-  if(p<=B) return 'passt'; if(p<=B*1.1) return 'knapp'; return 'aus';
+function passt(a,ohne){
+  if(ohne!=='preis' && F.preis<MAX && a.p>F.preis) return false;
+  if(ohne!=='marke' && F.marke && a.m!==F.marke) return false;
+  if(ohne!=='km' && F.km && a.km>+F.km) return false;
+  if(ohne!=='jahr' && F.jahr && jahrVon(a)<+F.jahr) return false;
+  if(ohne!=='ps' && F.ps && !(a.ps && a.ps>=+F.ps)) return false;
+  if(ohne!=='getriebe' && F.getriebe && a.g!==F.getriebe) return false;
+  if(ohne!=='treib' && F.treib.length && F.treib.indexOf(a.ft)<0) return false;
+  if(ohne!=='karo' && F.karo.length && F.karo.indexOf(a.k)<0) return false;
+  return true;
 }
-function zaehle(z,kn){
-  var html='<b>'+z+'</b> '+(z===1?'Auto passt':'Autos passen')+' zu Ihrem Budget'+(kn?'<small>'+kn+' knapp darüber</small>':'<small>&nbsp;</small>');
-  treffer.innerHTML=html;
+function chipsBauen(el,liste,feld){
+  el.innerHTML=liste.map(function(w){ return '<button type="button" class="f-chip" data-w="'+w+'" aria-pressed="false">'+w+' <small></small></button>'; }).join('');
+  el.addEventListener('click',function(e){ var b=e.target.closest('.f-chip'); if(!b) return; var w=b.dataset.w, i=F[feld].indexOf(w);
+    if(i>=0) F[feld].splice(i,1); else F[feld].push(w); anwenden(); });
 }
-function anfrageLink(B,passend){
-  var top=passend.sort(function(a,b){return +b.dataset.p - +a.dataset.p}).slice(0,3).map(function(k){
-    return '- '+k.querySelector('.marke').textContent+' '+k.querySelector('h3').textContent+' (CHF '+chf(+k.dataset.p)+'.–)';});
-  var b= modus==='monat' ? 'bis ca. CHF '+chf(B)+' (CHF '+chf(wert.monat)+' pro Monat, '+lz+' Monate, Anzahlung CHF '+chf(anz)+')' : 'bis CHF '+chf(B);
-  var body='Grüezi Herr Wyss\n\nMein Budget: '+b+(minPS?', ab '+minPS+' PS':'')+'.\n'+(top.length?'Mich interessieren:\n'+top.join('\n')+'\n':'')+'\nBitte melden Sie sich für einen Probefahrt-Termin.\n\nName:\nTelefon:';
-  anfrage.href='mailto:info@kalvaro.example?subject='+encodeURIComponent('Probefahrt-Anfrage über die Website')+'&body='+encodeURIComponent(body);
-  D.getElementById('anfrage-info').textContent = top.length ? 'E-Mail mit Ihrem Budget und Ihren Top '+top.length+' aus der Auswahl' : 'E-Mail mit Ihrem Budget';
+chipsBauen(D.getElementById('f-treib'),TREIB,'treib'); chipsBauen(D.getElementById('f-karo'),KARO,'karo');
+var marken={}; AUTOS.forEach(function(a){marken[a.m]=1});
+D.getElementById('f-marke').innerHTML='<option value="">Alle Marken</option>'+Object.keys(marken).sort(function(x,y){return x.localeCompare(y,'de')}).map(function(m){return '<option value="'+m+'">'+m+'</option>'}).join('');
+var SEL={marke:'f-marke',km:'f-km',jahr:'f-jahr',ps:'f-ps'};
+Object.keys(SEL).forEach(function(k){ D.getElementById(SEL[k]).addEventListener('change',function(){ F[k]=this.value; anwenden(); }); });
+D.getElementById('f-getriebe').addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; F.getriebe=b.dataset.w; anwenden(); });
+D.getElementById('f-sort').addEventListener('change',function(){ sortierung=this.value; anwenden(true); });
+function zuruecksetzen(){ F=JSON.parse(JSON.stringify(leerF)); animId++; anwenden(); fahre(MAX,600); }
+D.getElementById('leer-reset').addEventListener('click',zuruecksetzen);
+var LABEL={marke:function(v){return v},km:function(v){return 'bis '+chf(v)+' km'},jahr:function(v){return 'ab '+v},ps:function(v){return 'ab '+v+' PS'},getriebe:function(v){return v}};
+function chipListe(){
+  var c=[];
+  if(F.preis<MAX) c.push(['preis','','bis CHF '+chf(F.preis)]);
+  ['marke','km','jahr','ps','getriebe'].forEach(function(k){ if(F[k]) c.push([k,'',LABEL[k](F[k])]); });
+  F.treib.forEach(function(w){c.push(['treib',w,w])}); F.karo.forEach(function(w){c.push(['karo',w,w])});
+  return c;
 }
-function filtere(){
-  var B=budget(), z=0, kn=0, passend=[];
-  karten.forEach(function(k){ var st=stand(k,B);
-    k.classList.toggle('aus',st==='aus'); k.classList.toggle('knapp',st==='knapp');
-    k.setAttribute('aria-hidden', st==='aus'?'true':'false');
-    if(st==='passt'){ z++; passend.push(k); } if(st==='knapp') kn++; });
-  trefferZahl=z; zaehle(z,kn); anfrageLink(B,passend); planeSortierung();
-  miniW.innerHTML=(modus==='monat'?'CHF '+chf(wert.monat)+' / Mt.':'bis CHF '+chf(B))+'<small>'+z+' passen</small>';
-  kaufAusMonat.textContent='CHF '+chf(anz+wert.monat*lz);
+chipsEl.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+  if(b.classList.contains('e-reset')){ zuruecksetzen(); return; }
+  var k=b.dataset.k, w=b.dataset.w;
+  if(k==='preis'){ F.preis=MAX; animId++; fahre(MAX,500); } else if(k==='treib'||k==='karo'){ F[k].splice(F[k].indexOf(w),1); } else F[k]='';
+  anwenden(); });
+function sortiert(liste){
+  var f={ 'neu':function(a,b){return b.id-a.id}, 'preis-auf':function(a,b){return a.p-b.p}, 'preis-ab':function(a,b){return b.p-a.p}, 'km':function(a,b){return a.km-b.km}, 'jahr':function(a,b){return jahrVon(b)-jahrVon(a) || (+b.d.split('.')[0])-(+a.d.split('.')[0])} }[sortierung];
+  return liste.slice().sort(f);
 }
-/* passende Autos sanft nach oben sortieren (FLIP), erst wenn die Eingabe ruht */
-var sortT=null, ord={passt:0,knapp:1,aus:2};
-function planeSortierung(){ clearTimeout(sortT); sortT=setTimeout(sortiere, zieht?600:350); }
-function sortiere(){
-  if(zieht){ planeSortierung(); return; }
-  var B=budget(), neu=karten.slice().sort(function(a,b){ var d=ord[stand(a,B)]-ord[stand(b,B)]; return d || (+b.dataset.p - +a.dataset.p); });
-  var alt=[].slice.call(autosEl.children); if(neu.every(function(k,i){return alt[i]===k})) return;
-  var vor=new Map(); karten.forEach(function(k){ vor.set(k,k.getBoundingClientRect()); });
-  neu.forEach(function(k){ autosEl.appendChild(k); });
-  karten.forEach(function(k){ k.classList.toggle('gross', k===neu[0] && k.id==='auto-2'); });
-  if(reduce) return;
-  karten.forEach(function(k){ var a=vor.get(k), b=k.getBoundingClientRect(), dx=a.left-b.left, dy=a.top-b.top;
-    if(!dx && !dy) return; k.style.transition='none'; k.style.transform='translate('+dx+'px,'+dy+'px)'; });
-  autosEl.offsetWidth;
-  karten.forEach(function(k){ if(k.style.transform){ k.style.transition='transform .55s cubic-bezier(.2,.7,.2,1), opacity .45s ease, filter .45s ease'; k.style.transform=''; setTimeout(function(){ k.style.transition=''; },600); } });
+var ersterLauf=true;
+function anwenden(neuSortiert){
+  var treffer=AUTOS.filter(function(a){return passt(a)});
+  trefferZahl=treffer.length;
+  /* Karten zeigen / verstecken und ordnen */
+  var reihe=sortiert(AUTOS), vorher={};
+  AUTOS.forEach(function(a){ vorher[a.id]=!karten[a.id].hidden; });
+  reihe.forEach(function(a){ autosEl.appendChild(karten[a.id]); });
+  reihe.forEach(function(a){ var k=karten[a.id], an=passt(a); k.hidden=!an;
+    if(an && !ersterLauf && (!vorher[a.id] || neuSortiert) && !reduce){ k.classList.remove('rein'); void k.offsetWidth; k.classList.add('rein'); } });
+  ersterLauf=false;
+  trefferEl.innerHTML='<b>'+trefferZahl+'</b><span class="lang"> von </span><span class="kurz">/</span>'+AUTOS.length+'<span class="lang"> Autos</span>';
+  leer.hidden=trefferZahl>0;
+  /* Steuerelemente spiegeln */
+  Object.keys(SEL).forEach(function(k){ var s=D.getElementById(SEL[k]); s.value=F[k]; s.classList.toggle('an',!!F[k]); });
+  D.querySelectorAll('#f-getriebe button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.w===F.getriebe?'true':'false'); });
+  [['f-treib','treib','ft'],['f-karo','karo','k']].forEach(function(x){
+    D.querySelectorAll('#'+x[0]+' .f-chip').forEach(function(b){ var w=b.dataset.w, an=F[x[1]].indexOf(w)>=0;
+      var n=AUTOS.filter(function(a){return a[x[2]]===w && passt(a,x[1])}).length;
+      b.setAttribute('aria-pressed',an?'true':'false'); b.lastElementChild.textContent=n; b.classList.toggle('null',!an && n===0); }); });
+  /* Chips oben */
+  var c=chipListe();
+  chipsEl.innerHTML=c.map(function(x){ return '<button type="button" class="e-chip" data-k="'+x[0]+'" data-w="'+x[1]+'" aria-label="Filter '+x[2]+' entfernen">'+x[2]+'<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg></i></button>'; }).join('')+(c.length?'<button type="button" class="e-reset">Filter zurücksetzen</button>':'');
+  D.getElementById('f-anz').textContent=c.length?' ('+c.length+')':'';
+  D.getElementById('f-zeigen').textContent=trefferZahl===1?'1 Auto anzeigen':trefferZahl+' Autos anzeigen';
+  preisW.textContent=F.preis>=MAX?'alle':'CHF '+chf(F.preis);
+  schieber.value=F.preis;
+  svg.setAttribute('aria-valuenow',F.preis);
+  animId++; AUTOS.forEach(function(a){ karten[a.id].classList.remove('zeigt'); });
+  zeige(F.preis);
+  nachrichten(treffer,c);
 }
-function setze(v){
-  var M=MODI[modus]; v=Math.max(0,Math.min(M.max,Math.round(v/M.step)*M.step)); wert[modus]=v;
-  schieber.value=v; miniS.value=v; svg.setAttribute('aria-valuenow',v);
-  filtere(); zeige(v);
+function nachrichten(treffer,c){
+  var such=c.length? c.map(function(x){return x[2]}).join(', ') : 'alle Occasionen';
+  var wa=KONTAKT.anrede+', ich suche ein Auto: '+such+'. Bitte melden Sie sich, wenn Sie etwas Passendes haben. Danke!';
+  D.getElementById('wa').href='https://wa.me/'+KONTAKT.wa+'?text='+encodeURIComponent(wa);
+  var top=treffer.slice().sort(function(a,b){return b.p-a.p}).slice(0,3).map(function(a){return '- '+a.m+' '+a.t+' (CHF '+chf(a.p)+'.–)'});
+  var body=KONTAKT.anrede+'\n\nMeine Suche: '+such+'.\n'+(top.length?'Mich interessieren:\n'+top.join('\n')+'\n':'')+'\nBitte melden Sie sich für einen Probefahrt-Termin.\n\nName:\nTelefon:';
+  anfrage.href='mailto:'+KONTAKT.mail+'?subject='+encodeURIComponent('Probefahrt-Anfrage über die Website')+'&body='+encodeURIComponent(body);
+  D.getElementById('anfrage-info').textContent=top.length?'E-Mail mit Ihren Filtern und Ihren Top '+top.length:'E-Mail mit Ihren Filtern';
 }
-function fahre(ziel,dauer,mitFilter,fertig){
+/* Preis setzen (Nadel, Schieber) */
+var preisT=null;
+function setzePreis(v,sofort){
+  v=Math.max(MINP,Math.min(MAX,Math.round(v/STEP)*STEP));
+  F.preis=v; zeige(v); schieber.value=v; preisW.textContent=v>=MAX?'alle':'CHF '+chf(v);
+  clearTimeout(preisT); if(sofort) anwenden(); else preisT=setTimeout(anwenden,120);
+}
+function fahre(ziel,dauer,fertig){
   var id=++animId, von=anzeigeWert, t0=null;
-  if(reduce||dauer<=0){ if(mitFilter) setze(ziel); else zeige(ziel); if(fertig) fertig(); return; }
-  function f(t){ if(id!==animId) return; if(!t0)t0=t; var p=Math.min(1,(t-t0)/dauer), v=von+(ziel-von)*easeInOut(p);
-    if(mitFilter){ wert[modus]=v; filtere(); zeige(v); } else zeige(v);
-    if(p<1) requestAnimationFrame(f); else { if(mitFilter) setze(ziel); else zeige(ziel); if(fertig) fertig(); } }
+  if(reduce||dauer<=0){ zeige(ziel); if(fertig) fertig(); return; }
+  function f(t){ if(id!==animId) return; if(!t0)t0=t; var p=Math.min(1,(t-t0)/dauer), v=von+(ziel-von)*easeInOut(p); zeige(v);
+    if(p<1) requestAnimationFrame(f); else { zeige(ziel); if(fertig) fertig(); } }
   requestAnimationFrame(f);
 }
-function sperre(an){ busy=an; svg.classList.toggle('busy',an); autosEl.classList.toggle('busy',an); }
-function sweep(){
-  if(reduce){ setze(wert[modus]); return; }
-  var M=MODI[modus], ziel=wert[modus]; sperre(true);
-  fahre(M.max,700,true,function(){ fahre(ziel,900,true,function(){ setze(ziel); sperre(false); }); });
-}
-function wechsle(m){
-  if(m===modus) return; animId++; sperre(false); modus=m;
-  D.querySelectorAll('.modus button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.modus===m?'true':'false')});
-  monatFelder.hidden = m!=='monat';
-  var anteil=anzeigeWert/MODI[m==='kauf'?'monat':'kauf'].max; zeichneSkala(); anzeigeWert=anteil*MODI[m].max; zeige(anzeigeWert);
-  fahre(wert[m],700,true);
-}
-D.querySelectorAll('.modus button').forEach(function(b){ b.addEventListener('click',function(){wechsle(b.dataset.modus)}); });
-schieber.addEventListener('input',function(){ animId++; sperre(false); setze(+schieber.value); });
-miniS.addEventListener('input',function(){ animId++; sperre(false); setze(+miniS.value); });
-anzEl.addEventListener('input',function(){ anz=+anzEl.value; anzW.textContent='CHF '+chf(anz); filtere(); zeige(anzeigeWert); });
-D.querySelectorAll('.lz button').forEach(function(b){ b.addEventListener('click',function(){ lz=+b.dataset.lz;
-  D.querySelectorAll('.lz button').forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false')}); filtere(); zeige(anzeigeWert); }); });
-D.querySelectorAll('.sport-w button').forEach(function(b){ b.addEventListener('click',function(){ minPS=+b.dataset.ps;
-  D.querySelectorAll('.sport-w button').forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false')}); filtere(); }); });
+schieber.addEventListener('input',function(){ animId++; zieht=true; setzePreis(+schieber.value); });
+schieber.addEventListener('change',function(){ zieht=false; setzePreis(+schieber.value,true); });
 svg.addEventListener('keydown',function(e){
-  var M=MODI[modus], d={ArrowRight:1,ArrowUp:1,ArrowLeft:-1,ArrowDown:-1,PageUp:10,PageDown:-10}[e.key];
-  if(e.key==='Home'||e.key==='End'){ e.preventDefault(); animId++; setze(e.key==='Home'?0:M.max); return; }
-  if(d){ e.preventDefault(); animId++; sperre(false); setze(wert[modus]+d*M.step); }
+  var d={ArrowRight:1,ArrowUp:1,ArrowLeft:-1,ArrowDown:-1,PageUp:10,PageDown:-10}[e.key];
+  if(e.key==='Home'||e.key==='End'){ e.preventDefault(); animId++; setzePreis(e.key==='Home'?MINP:MAX,true); return; }
+  if(d){ e.preventDefault(); animId++; setzePreis(F.preis+d*STEP*5,true); }
 });
-function ausZeiger(e){
+function ausZeiger(e,start){
   var r=svg.getBoundingClientRect(), x=(e.clientX-r.left)*400/r.width, y=(e.clientY-r.top)*400/r.height;
-  var a=Math.atan2(y-CY,x-CX)*180/Math.PI; if(a<0) a+=360;
-  var rel=a-A0; if(rel<0) rel+=360;
+  if(start && Math.hypot(x-CX,y-CY)<42) return false;
+  var a=Math.atan2(y-CY,x-CX)*180/Math.PI; if(a<0) a+=360; var rel=a-A0; if(rel<0) rel+=360;
   if(rel>SW){ rel = rel>SW+(360-SW)/2 ? 0 : SW; }
-  animId++; setze(MODI[modus].max*rel/SW);
+  animId++; setzePreis(MAX*rel/SW); return true;
 }
-var zieht=false;
-svg.addEventListener('pointerdown',function(e){ sperre(false); zieht=true; svg.classList.add('zieht'); try{svg.setPointerCapture(e.pointerId)}catch(_){} ausZeiger(e); });
+svg.addEventListener('pointerdown',function(e){ if(!ausZeiger(e,true)) return; zieht=true; svg.classList.add('zieht'); try{svg.setPointerCapture(e.pointerId)}catch(_){} });
 svg.addEventListener('pointermove',function(e){ if(zieht) ausZeiger(e); });
-['pointerup','pointercancel','lostpointercapture'].forEach(function(t){ svg.addEventListener(t,function(){ zieht=false; svg.classList.remove('zieht'); }); });
-/* Auto zeigen: Nadel zeigt Preis (oder Monatsrate) des Autos */
+['pointerup','pointercancel','lostpointercapture'].forEach(function(t){ svg.addEventListener(t,function(){ if(!zieht) return; zieht=false; svg.classList.remove('zieht'); anwenden(); }); });
+/* Auto zeigen: Nadel zeigt den Preis des Autos (nur mit Maus) */
 if(window.matchMedia('(hover:hover)').matches){
-  karten.forEach(function(k){
-    k.addEventListener('mouseenter',function(){ if(busy||zieht) return; var p=+k.dataset.p, name=(k.querySelector('h3').textContent||'').slice(0,24);
-      var v = modus==='kauf' ? p : Math.max(0,Math.ceil((p-anz)/lz/50)*50);
-      k.classList.add('zeigt');
-      fahre(v,420,false,function(){ zeige(v,{k:name.toUpperCase(), w: chf(v), u: modus==='kauf' ? 'CHF Kaufpreis' : 'CHF ≈ pro Monat, '+lz+' Mt.'}); }); });
-    k.addEventListener('mouseleave',function(){ k.classList.remove('zeigt'); if(busy||zieht) return; fahre(wert[modus],420,false); });
+  AUTOS.forEach(function(a){ var k=karten[a.id];
+    k.addEventListener('mouseenter',function(){ if(zieht) return; k.classList.add('zeigt');
+      fahre(Math.min(a.p,MAX),420,function(){ zeige(Math.min(a.p,MAX),{k:((a.m+' '+a.t).length>24?(a.m+' '+a.t).slice(0,23).trim()+'…':(a.m+' '+a.t)).toUpperCase(), w:chf(a.p), u:'CHF Kaufpreis'}); }); });
+    k.addEventListener('mouseleave',function(){ k.classList.remove('zeigt'); if(zieht) return; fahre(F.preis,420); });
   });
 }
 function easeInOut(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
-zeichneSkala(); setze(wert.kauf);
-if('IntersectionObserver' in window){
-  var ioS=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ ioS.disconnect(); setTimeout(sweep,150);} }); },{threshold:.75});
+zeige(MAX); anwenden();
+/* einmaliger Schwung der Nadel, wenn das Instrument erscheint */
+if('IntersectionObserver' in window && !reduce){
+  var ioS=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ ioS.disconnect(); setTimeout(function(){ zeige(0); fahre(F.preis,1100); },150);} }); },{threshold:.6});
   ioS.observe(svg);
 }
+/* Telefon: Filter als Schublade */
+var huelle=D.getElementById('f-huelle'), oeffner=D.getElementById('f-oeffnen'), inst=D.getElementById('instrument'), mqD=window.matchMedia('(min-width:1021px)');
+function inertSetzen(){ var mob=!mqD.matches, auf=huelle.classList.contains('offen');
+  if(mob && !auf){ inst.setAttribute('inert',''); inst.setAttribute('aria-hidden','true'); } else { inst.removeAttribute('inert'); inst.removeAttribute('aria-hidden'); }
+  if(mob){ inst.setAttribute('role','dialog'); inst.setAttribute('aria-modal','true'); } else { inst.removeAttribute('role'); inst.removeAttribute('aria-modal'); } }
+function schublade(auf,fokusZurueck){ huelle.classList.toggle('offen',auf); oeffner.setAttribute('aria-expanded',auf?'true':'false'); D.documentElement.style.overflow=auf?'hidden':''; inertSetzen();
+  if(auf) setTimeout(function(){ D.getElementById('f-zu').focus({preventScroll:true}); },60); else if(fokusZurueck!==false && !mqD.matches) oeffner.focus({preventScroll:true}); }
+oeffner.addEventListener('click',function(){ schublade(true); });
+D.getElementById('f-zu').addEventListener('click',function(){ schublade(false); });
+D.getElementById('f-zeigen').addEventListener('click',function(){ schublade(false,false); D.getElementById('occasionen').querySelector('.ergebnis').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); });
+huelle.addEventListener('click',function(e){ if(e.target===huelle) schublade(false); });
+D.addEventListener('keydown',function(e){
+  if(!huelle.classList.contains('offen')) return;
+  if(e.key==='Escape'){ schublade(false); return; }
+  if(e.key==='Tab'){ var f=[].filter.call(inst.querySelectorAll('button,select,input,a[href],[tabindex="0"]'),function(x){ return x.offsetParent!==null && !x.disabled; });
+    if(!f.length) return; var erst=f[0], letzt=f[f.length-1];
+    if(e.shiftKey && D.activeElement===erst){ e.preventDefault(); letzt.focus(); } else if(!e.shiftKey && D.activeElement===letzt){ e.preventDefault(); erst.focus(); } }
+});
+mqD.addEventListener('change',function(){ if(mqD.matches) schublade(false,false); else inertSetzen(); });
+inertSetzen();
 
-/* Mini-Leiste auf dem Telefon: zeigen, sobald das Instrument aus dem Bild ist */
-var mini=D.getElementById('mini'), instr=D.getElementById('instrument'), occ=D.getElementById('occasionen');
-function miniPruefen(){
-  var ri=instr.getBoundingClientRect(), ro=occ.getBoundingClientRect();
-  var zeigen = ri.bottom<80 && ro.bottom>220;
-  mini.classList.toggle('zeigen',zeigen); mini.setAttribute('aria-hidden',zeigen?'false':'true'); miniS.tabIndex=zeigen?0:-1;
-}
-window.addEventListener('scroll',miniPruefen,{passive:true}); window.addEventListener('resize',miniPruefen);
 
 /* ---------- Galerie-Pfeile ---------- */
 var band=D.getElementById('band');

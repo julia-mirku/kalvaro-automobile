@@ -570,6 +570,25 @@ html{scroll-padding-top:76px}
 }
 @media (max-width:480px){.e-zahl .lang{display:none}.e-zahl .kurz{display:inline}.e-sort select{max-width:160px;font-size:14px}.f-oeffnen{padding:0 13px}}
 @media (max-height:500px){.e-kopf{position:static}}
+/* ---- Hero: nichts liegt auf dem Auto (Text und Knöpfe unter dem Foto) ---- */
+@media (min-width:861px) and (min-height:561px){
+  .hero{--fh:min(56.25vw, max(calc(100svh - 70px - 236px), 38vw));display:block;height:auto;min-height:0;max-height:none;padding:0}
+  .buehne{position:relative;inset:auto}
+  .tor-rahmen{position:relative;inset:auto;width:auto;height:var(--fh);padding:10px 10px 0}
+  .tor{height:100%;aspect-ratio:auto}
+  .tor::after{display:none}
+  .tor-leiste{position:absolute;inset:auto;top:calc(100% + 16px);right:max(20px,calc((100vw - 1240px) / 2));display:flex;align-items:center;gap:10px;pointer-events:none;z-index:6}
+  .tor-leiste .schild{position:static;flex-direction:row;align-items:baseline;gap:10px;padding:7px 14px;background:#1b1c1f;border:1px solid #2e3136;backdrop-filter:none}
+  .tor-leiste .schild span{font-size:17px}
+  .dia-nav{position:static;background:#1b1c1f;border:1px solid #2e3136}
+  .hero .text{position:relative;left:auto;right:auto;bottom:auto;padding:16px 0 26px;background:var(--nacht)}
+  .hero .text .wrap{grid-template-columns:minmax(0,1fr) minmax(0,520px);align-items:end;gap:14px 40px}
+  .hero .kicker{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hero .rechts{padding-top:56px;gap:10px}
+  .hero h1{font-size:clamp(38px,min(4.4vw,8vh),78px);text-shadow:none;margin-top:6px}
+  .hero .fakten{display:flex;flex-wrap:wrap;gap:0 14px;font-size:15px}
+  .hero .fakt{padding:4px 10px;margin-left:-10px}
+}
 </style>
 </head>
 <body>

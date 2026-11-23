@@ -113,8 +113,7 @@ html{scroll-padding-top:76px}
   will-change:transform}
 .tor .lamelle::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(#2a2c30,#1b1c1f);border-top:2px solid #5a5e64}
 .tor .lamelle b{position:absolute;bottom:13px;left:50%;width:120px;height:12px;margin-left:-60px;border-radius:6px;background:#8b9097;box-shadow:inset 0 -2px 0 rgba(0,0,0,.35);z-index:1}
-.js .tor.auf .lamelle{animation:hoch 2.1s cubic-bezier(.55,.05,.35,1) forwards}
-.js .tor.auf .dias{animation:licht 2.4s .2s ease-out forwards}
+.tor{touch-action:pan-y}
 .no-js .tor .lamelle{display:none}
 .no-js .tor .dias{transform:none;filter:none}
 @keyframes hoch{0%{transform:translateY(0)}9%{transform:translateY(-3%)}13%{transform:translateY(-2.3%)}100%{transform:translateY(-102%)}}
@@ -589,6 +588,13 @@ html{scroll-padding-top:76px}
   .hero .fakten{display:flex;flex-wrap:wrap;gap:0 14px;font-size:15px}
   .hero .fakt{padding:4px 10px;margin-left:-10px}
 }
+/* ---- 23.11: Hero hält, Tor öffnet sich beim Scrollen, nächster Block schiebt sich darüber ---- */
+.hero{position:sticky;top:70px;z-index:0}
+main > section:not(.hero),.fuss{position:relative;z-index:1}
+main{background:var(--nacht)}
+.occ{margin-top:62vh;border-radius:28px 28px 0 0;box-shadow:0 -24px 50px rgba(0,0,0,.55)}
+@media (max-width:860px){.occ{margin-top:52vh;border-radius:20px 20px 0 0}}
+@media (prefers-reduced-motion:reduce){.hero{position:relative;top:auto!important}.occ{margin-top:0}}
 </style>
 </head>
 <body>
@@ -951,13 +957,18 @@ window.addEventListener('scroll',function(){ D.querySelectorAll('.anh:not(.schwi
 
 /* ---------- Tor auf ---------- */
 var tor=D.getElementById('tor'), himg=D.getElementById('hero-img');
-function fertig(){ body.classList.add('ready'); setTimeout(diaStart,0); }
-function torAuf(){
-  if(reduce){ tor.classList.add('auf'); fertig(); return; }
-  requestAnimationFrame(function(){ setTimeout(function(){ tor.classList.add('auf'); setTimeout(fertig,2150); },250); });
+/* 23.11: Tor öffnet sich nur durch Scrollen; Autos wechseln nur per Pfeil, Punkt oder Wischen quer */
+var lam=tor.querySelector('.lamelle'), occEl=D.querySelector('.occ'), torDias=tor.querySelector('.dias');
+function torP(){ if(reduce) return 1; var lauf=parseFloat(getComputedStyle(occEl).marginTop)||300; return Math.min(1,Math.max(0,(window.scrollY||D.documentElement.scrollTop)/(lauf*.65))); }
+function torSetz(){
+  var p=torP(), e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+  lam.style.transform='translateY('+(-102*e).toFixed(2)+'%)';
+  torDias.style.transform='scale('+(1.06-.06*e).toFixed(4)+')';
+  torDias.style.filter='brightness('+(.45+.55*e).toFixed(3)+') saturate('+(.8+.2*e).toFixed(3)+')';
+  tor.classList.toggle('auf',p>=1);
 }
-if(himg.complete && himg.naturalWidth) torAuf();
-else { himg.addEventListener('load',torAuf,{once:true}); himg.addEventListener('error',torAuf,{once:true}); setTimeout(function(){ if(!tor.classList.contains('auf')) torAuf(); },4000); }
+window.addEventListener('scroll',torSetz,{passive:true});
+body.classList.add('ready');
 
 
 /* ---------- Wechselnde Autos im Tor ---------- */
@@ -991,7 +1002,7 @@ function diaZeig(i){
   }
   if(neu.complete && neu.naturalWidth) los(); else neu.addEventListener('load',los,{once:true});
 }
-function diaPlan(){ clearTimeout(diaT); if(reduce||diaPause||D.hidden) return; diaT=setTimeout(function(){ diaZeig(diaI+1); diaPlan(); },6000); }
+function diaPlan(){ clearTimeout(diaT); } /* kein automatischer Wechsel */
 function diaStart(){
   if(diaGestartet) return; diaGestartet=true;
   for(var i=1;i<DIAS.length;i++) diaBild(i);   /* vorladen */
@@ -1007,7 +1018,10 @@ if(window.matchMedia('(hover:hover)').matches){
   heroEl.addEventListener('mouseenter',function(){ diaPause=true; clearTimeout(diaT); });
   heroEl.addEventListener('mouseleave',function(){ diaPause=false; diaPlan(); });
 }
-D.addEventListener('visibilitychange',function(){ if(D.hidden) clearTimeout(diaT); else diaPlan(); });
+diaStart();
+/* Wischen quer über das Foto (Telefon) */
+var wx=0, wy=0, wAn=false;
+tor.addEventListener('touchstart',function(e){ var t=e.touches[0]; wx=t.clientX; wy=t.clientY; wAn=e.touches.length===1; },{passive:true});
 
 /* ---------- Filter mit Drehzahlmesser (Preis bis) ---------- */
 var svg=D.getElementById('tacho'), nadel=D.getElementById('nadel'), skala=D.getElementById('skala');
@@ -1244,6 +1258,34 @@ navi.addEventListener('click',function(e){ var g=e.target.closest('.ort-k'); if(
 navi.addEventListener('keydown',function(e){ var g=e.target.closest('.ort-k'); if(g&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); waehleOrt(g); } });
 waehleOrt(navi.querySelector('.ort-k'));
 setInterval(zeigen,30000);
+var heroH=D.querySelector('.hero');
+/* Hero passt immer ganz ins Fenster: das Auto bleibt stehen, nichts rutscht */
+var torR=D.querySelector('.tor-rahmen'), mqGross=window.matchMedia('(min-width:861px) and (min-height:561px)'), mqKlein=window.matchMedia('(max-width:860px)');
+var letzteB=-1, festH=0;
+function heroTop(ev){
+  var b=innerWidth, grob=window.matchMedia('(pointer:coarse)').matches;
+  if(grob && ev && ev.type==='resize' && b===letzteB) return;   /* Adressleiste am Telefon: nichts neu rechnen */
+  letzteB=b; festH=innerHeight;
+  var kopfH=D.querySelector('.kopf').offsetHeight;
+  heroH.style.removeProperty('--fh'); tor.style.height=''; tor.style.aspectRatio='';
+  if(mqGross.matches){
+    var rest=heroH.offsetHeight-torR.offsetHeight;
+    heroH.style.setProperty('--fh',Math.max(260,Math.min(b*.5625,festH-kopfH-rest))+'px');
+  } else if(mqKlein.matches){
+    var restK=heroH.offsetHeight-tor.offsetHeight;
+    var h=Math.max(170,Math.min(tor.offsetHeight,festH-kopfH-restK));
+    tor.style.aspectRatio='auto'; tor.style.height=h+'px';
+  }
+  var ueber=heroH.offsetHeight-(festH-kopfH);   /* jede andere Fenstergrösse: Foto flacher, bis alles passt */
+  if(ueber>0){
+    if(mqGross.matches) heroH.style.setProperty('--fh',Math.max(200,torR.offsetHeight-ueber)+'px');
+    else { var th=tor.offsetHeight; tor.style.aspectRatio='auto'; tor.style.height=Math.max(150,th-ueber)+'px'; }
+  }
+  heroH.style.top=Math.min(kopfH, festH-heroH.offsetHeight)+'px';
+  torSetz();
+}
+heroTop(); window.addEventListener('resize',heroTop); window.addEventListener('load',heroTop);
+if(D.fonts&&D.fonts.ready) D.fonts.ready.then(function(){ heroTop(); });
 })();
 </script>
 </body>

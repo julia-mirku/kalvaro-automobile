@@ -606,7 +606,7 @@ main{background:var(--nacht)}
 .hero .vorhang b{position:absolute;bottom:15px;left:50%;width:140px;height:12px;margin-left:-70px;border-radius:6px;background:#8b9097;box-shadow:inset 0 -2px 0 rgba(0,0,0,.35);z-index:1}
 .hero .vorhang.offen{pointer-events:none;visibility:hidden}
 .no-js .hero .vorhang{display:none}
-.lauf-weg{height:90vh;background:var(--nacht)}
+.lauf-weg{height:0;background:var(--nacht)}
 .occ{margin-top:0}
 @media (max-width:860px){.occ{margin-top:0}.hero .vorhang{border-width:0 5px}}
 @media (prefers-reduced-motion:reduce){.hero .vorhang,.lauf-weg{display:none}}
@@ -1002,15 +1002,54 @@ window.addEventListener('scroll',function(){ D.querySelectorAll('.anh:not(.schwi
 var tor=D.getElementById('tor'), himg=D.getElementById('hero-img');
 /* 23.11: Tor öffnet sich nur durch Scrollen; Autos wechseln nur per Pfeil, Punkt oder Wischen quer */
 var lam=D.getElementById('vorhang'), laufWeg=D.getElementById('lauf-weg'), torDias=tor.querySelector('.dias');
-function torP(){ if(reduce) return 1; var lauf=laufWeg.offsetHeight||300; return Math.min(1,Math.max(0,(window.scrollY||D.documentElement.scrollTop)/(lauf*.92))); }
+/* 23.11 (4): Solange das Tor nicht ganz offen ist, steht die Seite still. Rad, Trackpad und Finger heben nur das Tor;
+   der Rest der Geste (Trägheit) wird geschluckt. Danach scrollt die Seite normal, beginnend mit dem Auto. */
+var torG=reduce?1:0, torZu=!reduce, nachlauf=false, wLetzt=0, offenZeit=0, animT=0, fZiehen=false, fY=0, fSperre=false;
+function jetzt(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
 function torSetz(){
-  var p=torP(), e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+  var p=torG, e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
   lam.style.transform='translateY('+(-102*e).toFixed(2)+'%)';
   torDias.style.transform='scale('+(1.06-.06*e).toFixed(4)+')';
   torDias.style.filter='brightness('+(.45+.55*e).toFixed(3)+') saturate('+(.8+.2*e).toFixed(3)+')';
   tor.classList.toggle('auf',p>=1); lam.classList.toggle('offen',p>=1);
 }
-window.addEventListener('scroll',torSetz,{passive:true});
+function torAuf(){ torG=1; torZu=false; offenZeit=jetzt(); torSetz(); }
+function torNach(d){ if(!torZu) return; cancelAnimationFrame(animT); torG=Math.min(1,Math.max(0,torG+d)); if(torG>=1){ torAuf(); nachlauf=true; wLetzt=jetzt(); } else torSetz(); }
+function torZiel(){ /* Geste zu Ende: ab einem Drittel fährt das Tor von selbst ganz auf */
+  if(!torZu || torG<.3) return; var von=torG, t0=jetzt();
+  cancelAnimationFrame(animT);
+  (function schritt(){ var k=Math.min(1,(jetzt()-t0)/420); torG=von+(1-von)*(1-Math.pow(1-k,3)); if(k>=1){ torAuf(); return; } torSetz(); animT=requestAnimationFrame(schritt); })();
+}
+var radT=0;
+window.addEventListener('wheel',function(e){
+  if(e.ctrlKey) return;
+  var t=jetzt();
+  if(torZu){
+    e.preventDefault();
+    var d=e.deltaY*(e.deltaMode===1?40:e.deltaMode===2?innerHeight:1);
+    torNach(d/(innerHeight*.9));
+    clearTimeout(radT); radT=setTimeout(torZiel,180);
+    return;
+  }
+  if(nachlauf){
+    if(t-wLetzt<240 && t-offenZeit<3000){ e.preventDefault(); wLetzt=t; return; }
+    nachlauf=false;
+  }
+},{passive:false});
+window.addEventListener('touchstart',function(e){ fSperre=false; if(torZu && e.touches.length===1){ fZiehen=true; fY=e.touches[0].clientY; } },{passive:true});
+window.addEventListener('touchmove',function(e){
+  if(torZu){ e.preventDefault(); if(fZiehen && e.touches.length===1){ var y=e.touches[0].clientY; torNach((fY-y)/(innerHeight*.6)); fY=y; if(!torZu) fSperre=true; } return; }
+  if(fSperre) e.preventDefault();   /* der Finger, der das Tor geöffnet hat, schiebt die Seite nicht weiter */
+},{passive:false});
+window.addEventListener('touchend',function(){ fZiehen=false; torZiel(); },{passive:true});
+window.addEventListener('touchcancel',function(){ fZiehen=false; },{passive:true});
+window.addEventListener('keydown',function(e){
+  if(!torZu) return;
+  var k=e.key; if(k===' '||k==='PageDown'||k==='ArrowDown'||k==='End'||k==='Spacebar'){ var el=e.target; if(el&&/INPUT|TEXTAREA|SELECT/.test(el.tagName)) return; e.preventDefault(); torG=Math.max(torG,.3); torZiel(); }
+});
+/* Sprung per Link oder Bildlaufleiste: Tor sofort offen */
+window.addEventListener('scroll',function(){ if(torZu && (window.scrollY||D.documentElement.scrollTop)>2){ cancelAnimationFrame(animT); torAuf(); } },{passive:true});
+if((window.scrollY||D.documentElement.scrollTop)>2 && torZu) torAuf();
 body.classList.add('ready');
 
 
@@ -1314,7 +1353,7 @@ function heroTop(ev){
   heroH.style.height=hv+'px'; torR.style.height=hv+'px';
   var bx=tor.offsetWidth/Math.max(1,tor.offsetHeight);
   tor.style.setProperty('--fit', bx>=1.3?'cover':'contain');   /* hochkant: ganzes Auto zeigen, nicht abschneiden */
-  laufWeg.style.height=reduce?'0px':Math.round(festH*.9)+'px';
+  laufWeg.style.height='0px';   /* kein Leerweg mehr: das Tor hebt sich ohne Seitenbewegung */
   heroH.style.top=kopfH+'px';
   torSetz();
 }

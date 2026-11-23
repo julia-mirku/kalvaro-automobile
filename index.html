@@ -610,6 +610,28 @@ main{background:var(--nacht)}
 .occ{margin-top:0}
 @media (max-width:860px){.occ{margin-top:0}.hero .vorhang{border-width:0 5px}}
 @media (prefers-reduced-motion:reduce){.hero .vorhang,.lauf-weg{display:none}}
+/* ---- 23.11 (3): hinter der Jalousie nur das Auto, ganzer Bildschirm; Text danach ---- */
+.tor-lauf .hero{display:block;padding:0;min-height:0}
+.tor-lauf .buehne{position:relative;inset:auto;height:100%}
+.tor-lauf .tor-rahmen{position:relative;inset:auto;width:auto;height:calc(100svh - 70px);padding:10px;border-radius:0;background:var(--akzent)}
+.tor-lauf .tor{height:100%;aspect-ratio:auto!important;background:var(--nacht)}
+.tor-lauf .tor::after{display:none}
+.tor-lauf .tor .dia{object-fit:var(--fit,cover);object-position:var(--op,50% 65%)}
+.tor-lauf .tor-leiste{position:absolute;inset:auto;right:26px;bottom:26px;left:auto;top:auto;display:flex;flex-direction:row;align-items:center;gap:10px;margin:0;padding:0;background:none;pointer-events:none;z-index:6}
+.tor-lauf .tor-leiste .schild{position:static;opacity:1;transform:none;flex-direction:row;align-items:baseline;gap:10px;padding:8px 14px;background:rgba(15,16,18,.84);border:1px solid #2e3136;border-radius:10px;backdrop-filter:none;min-width:0;max-width:52vw;overflow:hidden}
+.tor-lauf .tor-leiste .schild span{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tor-lauf .dia-nav{position:static;background:rgba(15,16,18,.84);border:1px solid #2e3136}
+.hero.hero-text{position:relative;top:auto!important;height:auto;min-height:0!important;max-height:none;overflow:visible;z-index:1;display:block;padding:0}
+.hero.hero-text .text{position:relative;inset:auto;padding:30px 0 36px;background:var(--nacht)}
+@media (min-width:861px){.tor-lauf .tor-leiste{left:26px;right:auto}.tor-lauf .tor-leiste .schild small{white-space:nowrap}}
+@media (max-width:860px){
+  .tor-lauf .tor-rahmen{padding:5px}
+  .tor-lauf .tor-leiste{left:16px;right:16px;bottom:16px;justify-content:space-between}
+  .tor-lauf .tor-leiste .schild{max-width:none;flex:1 1 auto;padding:6px 10px}
+  .tor-lauf .tor-leiste .schild small{display:none}
+  .tor-lauf .tor-leiste .schild span{font-size:15px}
+  .hero.hero-text .text{padding:22px 0 30px}
+}
 </style>
 </head>
 <body>
@@ -638,7 +660,7 @@ main{background:var(--nacht)}
   <div class="tor-rahmen">
     <div class="tor" id="tor">
       <div class="dias">
-        <img class="dia an" id="hero-img" src="img/hero_1.jpg" srcset="img/hero_1_m.jpg 1200w, img/hero_1.jpg 2400w" sizes="(min-width:861px) 90vw, 100vw" fetchpriority="high" decoding="async" alt="Weisses Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen" width="2400" height="1350">
+        <img class="dia an" id="hero-img" src="img/hero_1.jpg" srcset="img/hero_1_m.jpg 1200w, img/hero_1.jpg 2400w" sizes="(min-width:861px) 90vw, 100vw" fetchpriority="high" decoding="async" alt="Weisses Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen" width="2400" height="1350" style="--op:50% 100%">
       </div>
     </div>
     <div class="tor-leiste">
@@ -650,6 +672,12 @@ main{background:var(--nacht)}
       </div>
     </div>
   </div>
+ </div>
+ <div class="vorhang" id="vorhang" aria-hidden="true"><b></b></div>
+</section>
+<div class="lauf-weg" id="lauf-weg" aria-hidden="true"></div>
+</div>
+<section class="hero hero-text" aria-label="Kalvaro Automobile – Kontakt">
   <div class="text">
     <div class="wrap">
       <div class="links">
@@ -669,11 +697,7 @@ main{background:var(--nacht)}
       </div>
     </div>
   </div>
- </div>
- <div class="vorhang" id="vorhang" aria-hidden="true"><b></b></div>
 </section>
-<div class="lauf-weg" id="lauf-weg" aria-hidden="true"></div>
-</div>
 
 <!-- ============ OCCASIONEN ============ -->
 <section class="occ" id="occasionen">
@@ -991,11 +1015,11 @@ body.classList.add('ready');
 
 /* ---------- Wechselnde Autos im Tor ---------- */
 var DIAS=[
- {f:'hero_1',fm:'hero_1_m',k:'Schon bei uns verkauft',t:'Subaru BRZ · Kalvaroweg 1',h:'#bewertungen',a:'Weisses Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen',op:'50% 62%',opm:'50% 62%'},
- {f:'hero_2',fm:'hero_2_m',k:'Schon bei uns verkauft',t:'Toyota GT86 · Kalvaroweg 1',h:'#bewertungen',a:'Gelbes Sportcoupé vor der Glasfront der Garage',op:'50% 62%',opm:'50% 62%'},
- {f:'hero_3',fm:'hero_3_m',k:'Schon bei uns verkauft',t:'BMW 3er · Kalvaroweg 1',h:'#bewertungen',a:'Dunkelblaue Limousine vor dem weissen Garagengebäude',op:'50% 62%',opm:'50% 62%'},
- {f:'hero_4',fm:'hero_4_m',k:'Schon bei uns verkauft',t:'Seat Leon ST · Kalvaroweg 1',h:'#bewertungen',a:'Grauer Kombi vor der Garage mit blauen Akzenten',op:'50% 62%',opm:'50% 62%'},
- {f:'hero_5',fm:'hero_5_m',k:'Schon bei uns verkauft',t:'Mazda MX-5 · Kalvaroweg 1',h:'#bewertungen',a:'Roter Roadster der 90er-Jahre vor dem weissen Garagengebäude',op:'50% 62%',opm:'50% 62%'}
+ {f:'hero_1',fm:'hero_1_m',k:'Schon bei uns verkauft',t:'Subaru BRZ · Kalvaroweg 1',h:'#bewertungen',a:'Weisses Sportcoupé vor dem weissen Garagengebäude mit blauen Rahmen',op:'50% 100%',opm:'50% 62%'},
+ {f:'hero_2',fm:'hero_2_m',k:'Schon bei uns verkauft',t:'Toyota GT86 · Kalvaroweg 1',h:'#bewertungen',a:'Gelbes Sportcoupé vor der Glasfront der Garage',op:'50% 100%',opm:'50% 62%'},
+ {f:'hero_3',fm:'hero_3_m',k:'Schon bei uns verkauft',t:'BMW 3er · Kalvaroweg 1',h:'#bewertungen',a:'Dunkelblaue Limousine vor dem weissen Garagengebäude',op:'50% 100%',opm:'50% 62%'},
+ {f:'hero_4',fm:'hero_4_m',k:'Schon bei uns verkauft',t:'Seat Leon ST · Kalvaroweg 1',h:'#bewertungen',a:'Grauer Kombi vor der Garage mit blauen Akzenten',op:'50% 100%',opm:'50% 62%'},
+ {f:'hero_5',fm:'hero_5_m',k:'Schon bei uns verkauft',t:'Mazda MX-5 · Kalvaroweg 1',h:'#bewertungen',a:'Roter Roadster der 90er-Jahre vor dem weissen Garagengebäude',op:'50% 100%',opm:'50% 62%'}
 ];
 var diasEl=tor.querySelector('.dias'), schild=D.getElementById('schild'), punkte=D.getElementById('punkte'), diaNav=D.getElementById('dia-nav');
 var diaImgs=[himg], diaI=0, diaT=null, diaPause=false, diaGestartet=false;
@@ -1285,23 +1309,12 @@ function heroTop(ev){
   if(grob && ev && ev.type==='resize' && b===letzteB) return;   /* Adressleiste am Telefon: nichts neu rechnen */
   letzteB=b; festH=innerHeight;
   var kopfH=D.querySelector('.kopf').offsetHeight;
-  heroH.style.removeProperty('--fh'); tor.style.height=''; tor.style.aspectRatio=''; heroH.style.minHeight='';
-  if(mqGross.matches){
-    var rest=heroH.offsetHeight-torR.offsetHeight;
-    heroH.style.setProperty('--fh',Math.max(260,Math.min(b*.5625,festH-kopfH-rest))+'px');
-  } else if(mqKlein.matches){
-    var restK=heroH.offsetHeight-tor.offsetHeight;
-    var h=Math.max(170,Math.min(tor.offsetHeight,festH-kopfH-restK));
-    tor.style.aspectRatio='auto'; tor.style.height=h+'px';
-  }
-  var ueber=heroH.offsetHeight-(festH-kopfH);   /* jede andere Fenstergrösse: Foto flacher, bis alles passt */
-  if(ueber>0){
-    if(mqGross.matches) heroH.style.setProperty('--fh',Math.max(200,torR.offsetHeight-ueber)+'px');
-    else { var th=tor.offsetHeight; tor.style.aspectRatio='auto'; tor.style.height=Math.max(150,th-ueber)+'px'; }
-  }
-  heroH.style.minHeight=(festH-kopfH)+'px';   /* Jalousie deckt den ganzen Bildschirm */
+  var hv=festH-kopfH;                       /* Foto füllt den ganzen Bildschirm unter der Kopfzeile */
+  heroH.style.height=hv+'px'; torR.style.height=hv+'px';
+  var bx=tor.offsetWidth/Math.max(1,tor.offsetHeight);
+  tor.style.setProperty('--fit', bx>=1.3?'cover':'contain');   /* hochkant: ganzes Auto zeigen, nicht abschneiden */
   laufWeg.style.height=reduce?'0px':Math.round(festH*.9)+'px';
-  heroH.style.top=Math.min(kopfH, festH-heroH.offsetHeight)+'px';
+  heroH.style.top=kopfH+'px';
   torSetz();
 }
 heroTop(); window.addEventListener('resize',heroTop); window.addEventListener('load',heroTop);

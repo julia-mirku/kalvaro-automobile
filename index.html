@@ -204,7 +204,7 @@ html{scroll-padding-top:76px}
 @media (hover:hover){.ready .modus button:hover{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(25,184,255,.45)}}
 #tacho{width:100%;height:auto;max-height:calc(100svh - 470px);min-height:170px;margin:0 auto;display:block;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
 @media (max-width:1020px){#tacho{max-height:none}}
-@media (min-width:1021px){.instrument{max-height:calc(100svh - 110px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#3a3d42 transparent}}
+@media (min-width:1021px){.instrument{max-height:calc(100svh - 110px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#3a3d42 transparent}}
 .instrument .hinweis{margin-top:8px}
 @media (max-height:820px) and (min-width:1021px){.instrument .hinweis{display:none}.instrument{padding:14px 16px}.frage{font-size:19px;margin-bottom:8px}.feld{margin-top:8px}.lz button,.sport-w button{min-height:34px}.anfrage{min-height:44px;margin-top:8px}.modus button{min-height:36px}.schieber{margin-top:6px}}
 #tacho.zieht{cursor:grabbing}
@@ -1035,7 +1035,6 @@ window.addEventListener('wheel',function(e){
     return;
   }
   if(nachlauf){
-    if(t-wLetzt<400 && t-offenZeit<3000){ e.preventDefault(); wLetzt=t; return; }
     nachlauf=false;
   }
 },{passive:false});
